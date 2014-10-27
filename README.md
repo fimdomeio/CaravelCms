@@ -28,3 +28,5 @@ A laravel CMS
 
 	`git clone https://github.com/fimdomeio/CaravelCms.git`
 
+- Add Caravel default routes to by editing app/routes.php and adding `include __DIR__.'/CaravelCms/routes.php';` to the beginning of the file.
+
