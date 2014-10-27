@@ -9,24 +9,18 @@ A laravel CMS
 ## Install
 
 - Install Laravel as described on [http://laravel.com/docs/4.2/quick](http://laravel.com/docs/4.2/quick)
-- add caravel to your composer.json file
+
+- `git clone https://github.com/fimdomeio/CaravelCms.git workbench`
+
+- cd into `workbench/fimdomeio` and run `composer install`
+
+- add caravel to as a ServiceProvider in app/config/app.php
 
 <pre>
-	"autoload": {
-		"classmap": [
-			...
-		],
-		"psr-4": {
-			"Caravel\\": "app\\CaravelCms"
-		}
-	},
+	'providers' => array(
+		...,
+		'Fimdomeio\Caravel\CaravelServiceProvider'
+	),
 </pre>
 
-- run `composer dump-autoload -o`
-
-- cd into app directory and clone the Caravel repo:
-
-	`git clone https://github.com/fimdomeio/CaravelCms.git`
-
-- Add Caravel default routes to by editing app/routes.php and adding `include __DIR__.'/CaravelCms/routes.php';` to the beginning of the file.
-
+- run `php artisan serve` and go to `http://localhost:8000/admin` to test
