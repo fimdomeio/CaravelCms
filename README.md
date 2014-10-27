@@ -22,6 +22,7 @@ A laravel CMS
 	},
 </pre>
 
+- run `composer dump-autoload -o`
 
 - cd into app directory and clone the Caravel repo:
 
