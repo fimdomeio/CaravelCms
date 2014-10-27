@@ -17,7 +17,7 @@ A laravel CMS
 			...
 		],
 		"psr-4": {
-			"Caravel\\": "app\CaravelCms"
+			"Caravel\\": "app\\CaravelCms"
 		}
 	},
 </pre>
