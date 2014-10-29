@@ -1,4 +1,22 @@
+/.idea
 /vendor
-composer.phar
-composer.lock
+/node_modules
+.env
 .DS_Store
+Thumbs.db
+composer.lock
+composer.phar
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+
+# the database
+database.sqlite
+
+# vim temporary files
+*~
+*.swp
+*.swo
+
+*.sublime-project
+*.sublime-workspace
