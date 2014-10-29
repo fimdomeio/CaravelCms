@@ -53,13 +53,13 @@ gulp.task('default', ['css', 'js'], function(){});
 
 gulp.task('update', ['downloadVendor', 'gitPull', 'dbMigrations', 'scanRoutes', 'updateBower'],function(){})
 
-gulp.task('watch', function(){
+gulp.task('watch', ['assetPublish'], function(){
 	console.log('watching js and less for changes...');
 	var watchLess = [].concat(adminCssSrc).concat(frontCssSrc)
 	var watchJs = [].concat(jsAdminProdsrc).concat(jsAdminJqueryDevelSrc)
 	
-	gulp.watch(watchLess, ['css'])
-	gulp.watch(watchJs, ['js'])
+	gulp.watch(watchLess, ['css', 'assetPublish'])
+	gulp.watch(watchJs, ['js', 'assetPublish'])
 
 
 })
@@ -68,6 +68,7 @@ gulp.task('watch', function(){
 
 
 gulp.task('css', function(){
+	
 		gulp.src(adminCssSrc)
 		.pipe(newer(adminCssDest+'/style.css'))
 		.pipe(less())
@@ -101,7 +102,11 @@ gulp.task('js', function(){
 
 });
 
+gulp.task('assetPublish', function(){
+	var cmd = new run.Command('php ../../../artisan asset:publish --bench="fimdomeio/caravel"');
+	cmd.exec();          
 
+});
 
 gulp.task('downloadVendor', function(){
 		download('http://fimdomeio.com/p/Caravel/latest-vendor.zip')
