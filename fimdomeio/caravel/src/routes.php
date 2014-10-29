@@ -1,5 +1,6 @@
 <?php
 
+//namespace Fimdomeio\Caravel;
 
 Route::get('/admin', function()
 {
