@@ -23,3 +23,5 @@ database.sqlite
 *.sublime-workspace
 
 
+
+/fimdomeio/caravel/public/css/admin/style.css
