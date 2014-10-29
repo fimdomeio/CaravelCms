@@ -1,9 +1,9 @@
 
-@extends('admin.layout')
+@extends('caravel::admin.layout')
 
 
 @section('content')
-
-	@include('admin.elements.list')
+	<a href="{{strtolower($title)}}/create" class="btn btn-primary">add {{str_singular($title)}}</a>
+	@include('caravel::admin.elements.list')
 
 @stop
