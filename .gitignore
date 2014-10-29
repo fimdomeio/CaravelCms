@@ -1,6 +1,6 @@
 /.idea
-/vendor
-/node_modules
+/fimdomeio/caravel/vendor/
+node_modules
 .env
 .DS_Store
 Thumbs.db
@@ -21,3 +21,5 @@ database.sqlite
 # sublime temporary files
 *.sublime-project
 *.sublime-workspace
+
+
