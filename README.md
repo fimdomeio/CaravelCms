@@ -3,7 +3,7 @@ Caravel
 
 A laravel CMS
 
-**This software is in pre-alpha stage and expected to break**
+**This software is in pre 0.1 stage. Using it still feels like you're sailing a caravel at Cape of Good Hope and probably heading directly to the rocks... Yet we all know that incredible exotic stuff lies ahead.**
 
 
 ## Install
@@ -36,5 +36,13 @@ A laravel CMS
 	),
 </pre>
 
+- run `php artisan build` to compile ant copy assets to their final destinations
 
 - run `php artisan serve` and go to `http://localhost:8000/admin` to test
+
+Further reading is starting to show up in the wiki.
+
+We hang around #caravelcms on freenode. Feel free to drop by anytime.
+
+For spam related subjects contact us at caravel@fimdomeio.com ;)
+
