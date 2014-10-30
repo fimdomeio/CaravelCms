@@ -20,6 +20,12 @@ class CaravelServiceProvider extends ServiceProvider {
 	{
 		$this->package('fimdomeio/caravel');
 		include __DIR__.'/../../routes.php';
+		$this->app->bind('fimdomeio::commands.build', function($app) {
+   		 return new BuildCommand();
+		});
+		$this->commands(array(
+  	  'fimdomeio::commands.build'
+		));
 	}
 
 	/**
