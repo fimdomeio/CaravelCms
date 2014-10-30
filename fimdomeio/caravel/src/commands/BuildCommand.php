@@ -61,6 +61,7 @@ class BuildCommand extends Command {
 			$deployDir.'/css/style.css'
 		);
 		$this->info('style.css updated');
+		$this->confirm('Do you want keep watching files for further changes? [y|n] (not implemented)');
 	}
 
 	/**
