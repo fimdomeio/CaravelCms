@@ -6,8 +6,15 @@ use \Debugbar;
 class BoatsController extends \BaseController {
 
 	public function __construct(){
-		$this->title = 'Boats';
-		//parent::__construct();
+		$this->title  = 'Boats'; //page title
+		$this->fields = ['name', 'build_date']; //listing fields to show on index
+
+		//example buttons for Index page... if var not present Add is created automagically
+		$this->indexButtons = [
+			['title' => 'add Saillors',
+				'url' => '/sailors/create'
+			],
+		];
 	}
 
 	/**
@@ -17,17 +24,13 @@ class BoatsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$fields   = ['name', 'build_date'];
-		$contents = Boat::all(); 
+		$contents = Boat::all($this->fields); 
 
-		$debugArray = ['Testing', 1,2,3];
-		//don't forget the use at the top
-		Debugbar::error("example debugging messages generated at ".basename(__FILE__)." around line ".__LINE__);
-		Debugbar::info($debugArray);
-		Debugbar::warning('You\'d better watch out..');
-		Debugbar::addMessage('Another message', 'custom Label');
-
-		return \View::make('caravel::admin.index')->with('title', $this->title)->with('fields', $fields)->with('contents', $contents);
+		return \View::make('caravel::admin.index')
+			->with('title', $this->title)
+			->with('fields', $this->fields)
+			->with('buttons', $this->indexButtons)
+			->with('contents', $contents);
 
 	}
 
