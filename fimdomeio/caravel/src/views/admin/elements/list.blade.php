@@ -1,13 +1,10 @@
-@if(empty($title))
-	{{{die('You must provide a $title for this page')}}}
-@endif
-
 
 @if(empty($fields))
-	{{{die('You must provide a $fields array with the fields you want to show')}}}
-@endif
+	{{{die('You must provide a $this->fields array on the Controller')}}}
+	@endif
+
 @if(empty($contents))
-	{{{die('You must provide a $contents variable with the contents you want to show')}}}
+	{{{die('You must provide a $contents variable normally as a result of a db call')}}}
 @endif
 
 <h2>{{$title}}</h2>
