@@ -1,7 +1,7 @@
 <?php
 
 namespace Fimdomeio\Caravel;
-
+use \Debugbar;
 
 class BoatsController extends \BaseController {
 
@@ -19,7 +19,16 @@ class BoatsController extends \BaseController {
 	{
 		$fields   = ['name', 'build_date'];
 		$contents = Boat::all(); 
+
+		$debugArray = ['Testing', 1,2,3];
+		//don't forget the use at the top
+		Debugbar::error("example debugging messages generated at ".basename(__FILE__)." around line ".__LINE__);
+		Debugbar::info($debugArray);
+		Debugbar::warning('You\'d better watch out..');
+		Debugbar::addMessage('Another message', 'custom Label');
+
 		return \View::make('caravel::admin.index')->with('title', $this->title)->with('fields', $fields)->with('contents', $contents);
+
 	}
 
 
