@@ -31,7 +31,7 @@ A laravel CMS
 <pre>
 	'providers' => array(
 		...,
-		'Fimdomeio\Caravel\CaravelServiceProvider'
+		'Fimdomeio\Caravel\CaravelServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 	),
 </pre>
