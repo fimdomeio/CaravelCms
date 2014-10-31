@@ -80,7 +80,7 @@ class BuildCommand extends Command {
 	public function fire()
 	{
 		$this->update();
-		if($this->confirm('Do you want keep watching files for further changes? [y|n] (not implemented)')){
+		if($this->confirm('Do you want keep watching files for further changes? [y|n]')){
 			while(true){
 				sleep(2);
 				clearstatcache(); //clear file mtimes cache
