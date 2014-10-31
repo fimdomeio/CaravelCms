@@ -20,7 +20,7 @@ class BuildCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Renders less concatenates and moves js.';
+
 
 	/**
 	 * Create a new command instance.
@@ -29,6 +29,46 @@ class BuildCommand extends Command {
 	 */
 	public function __construct()
 	{
+		$this->description = 'Renders less concatenates and moves js.';
+
+		$this->deployDir = base_path()."/public/packages/fimdomeio/caravel/";
+		$this->caravelDir = base_path().'/workbench/fimdomeio/caravel/';
+			
+		$this->jsProdSrc = [
+				[ 'path' => $this->caravelDir.'bower_components/jquery/dist/jquery.min.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.min.js')
+				],
+				[
+					'path' => $this->caravelDir.'public/js/admin/myscript.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.min.js')
+				]
+			];
+
+		$this->jsProdDest = $this->deployDir.'js/admin/script-prod.js';
+
+		$this->jsDevelSrc = [
+				'jquery' => [
+					'path' => $this->caravelDir.'/bower_components/jquery/dist/jquery.js',
+					'mtime' => filemtime($this->caravelDir.'/bower_components/jquery/dist/jquery.js')
+				],
+				'myscript' => [
+					'path' => $this->caravelDir.'/public/js/admin/myscript.js',
+					'mtime' => filemtime($this->caravelDir.'/public/js/admin/myscript.js')
+				]
+			];
+
+		$this->jsDevelDest = [
+				'jquery' => $this->deployDir.'js/admin/jquery-devel.js',
+				'myscript' => $this->deployDir.'js/admin/myscript.js'			
+			];
+
+		$this->lessSrc = [
+				'style' => [
+					'path' => $this->caravelDir.'public/css/admin/style.less',
+					'mtime' => filemtime($this->caravelDir.'public/css/admin/style.less')
+				]
+			];
+
 		parent::__construct();
 	}
 
@@ -39,29 +79,45 @@ class BuildCommand extends Command {
 	 */
 	public function fire()
 	{
-		$deployDir = base_path()."/public/packages/fimdomeio/caravel/";
-		$caravelDir = base_path().'/workbench/fimdomeio/caravel/';
-		$jsProdfiles = [
-			$caravelDir.'bower_components/jquery/dist/jquery.min.js',
-			$caravelDir.'public/js/admin/myscript.js'	
-		];
+		$this->update();
+		if($this->confirm('Do you want keep watching files for further changes? [y|n] (not implemented)')){
+			while(true){
+				sleep(2);
+				clearstatcache(); //clear file mtimes cache
+				if($this->updateMtime($this->jsDevelSrc) ||
+					$this->updateMtime($this->jsProdSrc) ||
+					$this->updateMtime($this->lessSrc)
+				){
+					$this->update();
+				}
+			}
+		}
+	}
 
-		$jsProdDest = $deployDir.'js/admin/script-prod.js';
-		$contents = $this->joinFiles($jsProdfiles);
-		$this->saveAs($contents, $jsProdDest);
-		$this->copyTo($caravelDir.'/bower_components/jquery/dist/jquery.js',
-			$deployDir.'js/admin/jquery-devel.js'
-		);
-		$this->copyTo($caravelDir.'/public/js/admin/myscript.js',
-			$deployDir.'js/admin/myscript.js'
-		);
+	private function updateMtime(&$fileGroup){
+			foreach($fileGroup as &$file){
+				$oldMtime = $file['mtime'];
+				$file['mtime'] = filemtime($file['path']);
+				if($oldMtime != $file['mtime']){
+					$this->info("-----\n".basename($file['path'])." changed at ".date('H:i:s', time()) ."\n-----");
+					return true;
+				}
+			}
+			return false;
+	}
+
+	private function update(){
+		$contents = $this->joinFiles($this->jsProdSrc);
+		$this->saveAs($contents, $this->jsProdDest);
+
+		$this->copyTo($this->jsDevelSrc['jquery']['path'], $this->jsDevelDest['jquery']);
+		$this->copyTo($this->jsDevelSrc['myscript']['path'], $this->jsDevelDest['myscript']);
 
 		$less = new lessc;
-		$less->compileFile($caravelDir.'public/css/admin/style.less',
-			$deployDir.'/css/style.css'
+		$less->compileFile($this->lessSrc['style']['path'],
+			$this->deployDir.'/css/style.css'
 		);
 		$this->info('style.css updated');
-		$this->confirm('Do you want keep watching files for further changes? [y|n] (not implemented)');
 	}
 
 	/**
@@ -91,10 +147,10 @@ class BuildCommand extends Command {
 	private function joinFiles($files){
 		$content = '';
 		foreach($files as $file){
-			if(!file_exists($file)){
-				die('file '.$file.' does not exist');
+			if(!file_exists($file['path'])){
+				die('file '.$file['path'].' does not exist');
 			}
-			$content .= file_get_contents($file)."\n";
+			$content .= file_get_contents($file['path'])."\n";
 		}
 		$this->info('files concatenated');
 		return $content;
