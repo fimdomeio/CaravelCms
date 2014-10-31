@@ -8,6 +8,7 @@
 @endif
 
 <h2>{{$title}}</h2>
+@if(!empty($contents['items']))
 	<table class="table" cellspacing='0'>
 	<tr>
 	@foreach($fields as $field)
@@ -31,6 +32,9 @@
 			</td>
 	</tr>
 	@endforeach
-  </table>
+	</table>
+	@else
+		<div class="alert alert-info" role="alert">There aren't any {{$title}} yet</div>
+@endif
 
 
