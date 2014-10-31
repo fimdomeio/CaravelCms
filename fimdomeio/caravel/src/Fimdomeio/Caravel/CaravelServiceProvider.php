@@ -26,6 +26,14 @@ class CaravelServiceProvider extends ServiceProvider {
 		$this->commands(array(
   	  'fimdomeio::commands.build'
 		));
+
+		$this->app->bind('fimdomeio::commands.test', function($app) {
+   		 return new TestCommand();
+		});
+		$this->commands(array(
+  	  'fimdomeio::commands.test'
+		));
+
 	}
 
 	/**
