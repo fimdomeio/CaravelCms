@@ -10,20 +10,20 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*"
+     },
+    "require-dev": {
+        "oyejorge/less.php": "~1.5",
+        "behat/behat": "2.5.*@stable",
+        "behat/mink": "1.5.*@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*",
+        "way/generators": "~2.0"
     },
-		"require-dev": {
-			"oyejorge/less.php": "~1.5",
-			"behat/behat": "2.5.*@stable",
-			"behat/mink": "1.5.*@stable",
-			"behat/mink-extension": "*",
-			"behat/mink-goutte-driver": "*"
-		},
     "autoload": {
         "classmap": [
             "src/migrations",
-						"src/commands/",
-						"src/controllers",
-						"src/models"
+            "src/commands",
+            "src/controllers"
         ],
         "psr-0": {
             "Fimdomeio\\Caravel\\": "src/"
