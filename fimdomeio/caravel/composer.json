@@ -23,7 +23,8 @@
         "classmap": [
             "src/migrations",
             "src/commands",
-            "src/controllers"
+            "src/controllers",
+            "src/models"
         ],
         "psr-0": {
             "Fimdomeio\\Caravel\\": "src/"

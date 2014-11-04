@@ -8,7 +8,7 @@
 @endif
 
 <h2>{{$title}}</h2>
-@if(!empty($contents['items']))
+@if(!is_null($contents))
 	<table class="table" cellspacing='0'>
 	<tr>
 	@foreach($fields as $field)
@@ -28,13 +28,16 @@
 			<td>
 				<a class="btn btn-default" href='view'>view</a>
 				<a class="btn btn-default" href='edit'>edit</a>
-				<a class="btn btn-default" href='delete'>delete</a>
+	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete')) }}			
+	{{Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+{{ Form::close() }}
+
 			</td>
 	</tr>
 	@endforeach
 	</table>
-	@else
+@else
 		<div class="alert alert-info" role="alert">There aren't any {{$title}} yet</div>
-@endif
+@endif 
 
 
