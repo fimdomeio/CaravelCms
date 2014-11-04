@@ -79,6 +79,14 @@ class BuildCommand extends Command {
 	 */
 	public function fire()
 	{
+		// Create folders if they don't exist
+		if(!file_exists($this->deployDir.'js/admin/')){
+			mkdir($this->deployDir.'js/admin/', 0755, true);
+		}
+		if(!file_exists($this->deployDir.'css/admin/')){
+			mkdir($this->deployDir.'css/admin/', 0755, true);
+		}
+
 		$this->update();
 		if($this->confirm('Do you want keep watching files for further changes? [y|n]')){
 			while(true){
