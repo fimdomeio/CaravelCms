@@ -123,7 +123,7 @@ class BuildCommand extends Command {
 
 		$less = new lessc;
 		$less->compileFile($this->lessSrc['style']['path'],
-			$this->deployDir.'/css/style.css'
+			$this->deployDir.'/css/admin/style.css'
 		);
 		$this->info('style.css updated');
 	}
