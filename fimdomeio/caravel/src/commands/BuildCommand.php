@@ -35,7 +35,8 @@ class BuildCommand extends Command {
 		$this->caravelDir = base_path().'/workbench/fimdomeio/caravel/';
 			
 		$this->jsProdSrc = [
-				[ 'path' => $this->caravelDir.'bower_components/jquery/dist/jquery.min.js',
+				[
+					'path' => $this->caravelDir.'bower_components/jquery/dist/jquery.min.js',
 					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.min.js')
 				],
 				[
@@ -48,12 +49,12 @@ class BuildCommand extends Command {
 
 		$this->jsDevelSrc = [
 				'jquery' => [
-					'path' => $this->caravelDir.'/bower_components/jquery/dist/jquery.js',
-					'mtime' => filemtime($this->caravelDir.'/bower_components/jquery/dist/jquery.js')
+					'path' => $this->caravelDir.'bower_components/jquery/dist/jquery.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.js')
 				],
 				'myscript' => [
-					'path' => $this->caravelDir.'/public/js/admin/myscript.js',
-					'mtime' => filemtime($this->caravelDir.'/public/js/admin/myscript.js')
+					'path' => $this->caravelDir.'public/js/admin/myscript.js',
+					'mtime' => filemtime($this->caravelDir.'public/js/admin/myscript.js')
 				]
 			];
 
@@ -123,7 +124,7 @@ class BuildCommand extends Command {
 
 		$less = new lessc;
 		$less->compileFile($this->lessSrc['style']['path'],
-			$this->deployDir.'/css/admin/style.css'
+			$this->deployDir.'css/admin/style.css'
 		);
 		$this->info('style.css updated');
 	}
