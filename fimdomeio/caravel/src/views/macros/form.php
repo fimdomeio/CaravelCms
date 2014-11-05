@@ -22,6 +22,23 @@ Form::macro('textareaField', function($name, $label = null, $value = null, $attr
     return fieldWrapper($name, $label, $element);
 });
 
+Form::macro('radioButtonsField', function($name, $options){
+	$element = '<div class = "btn-group" data-toggle = "buttons">';
+	foreach($options as $option){
+		$active = '';
+		$checked = '';
+		if(isset($option['checked'])){
+			$active = 'active';
+			$checked= 'checked';
+		}
+	$element .= '<label class="btn btn-default '.$active.'">
+    <input type="radio" name="'.$name.'" value="'.$option['value'].'" autocomplete="off" '.$checked.'> '.$option['label'].'
+  </label>';
+	}
+	$element .= '</div>';
+	return $element;
+});
+
 function fieldLabel($name, $label)
 {
     if (is_null($label)) return '';

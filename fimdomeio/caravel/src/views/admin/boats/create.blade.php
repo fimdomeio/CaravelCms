@@ -11,10 +11,13 @@
 	{{Form::textField('name', 'Name')}}
 	{{Form::textField('build_date', 'Date')}}
 	{{Form::textareaField('description', 'description')}}
-	{{Form::textField('published', 'Published')}}
+
+	{{Form::radioButtonsField('published', [
+		['value' => 1, 'label' => 'Published', 'checked' => true],
+		['value' => 0, 'label' => 'Draft']
+	])}}
 
 
-</fieldset>
 <div class="col-md-12 text-center">
 	{{Form::submit('Save', array('class' => 'btn btn-success')) }}
 </div>
