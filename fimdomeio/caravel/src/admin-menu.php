@@ -1,0 +1,4 @@
+<?php
+$adminMenu = [
+	'boats' => '/boats'
+	];

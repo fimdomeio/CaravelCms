@@ -22,6 +22,7 @@ class CaravelServiceProvider extends ServiceProvider {
 		$this->app->register('Way\Generators\GeneratorsServiceProvider');
 
 		$this->package('fimdomeio/caravel');
+		include __DIR__.'/../../filters.php';
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../views/macros/form.php';
 
