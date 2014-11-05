@@ -26,9 +26,11 @@
 			</td>
 			@endforeach
 			<td>
+				<div class="btn-group pull-left">
 				<a class="btn btn-default" href='view'>view</a>
 				<a class="btn btn-default" href='edit'>edit</a>
-	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete')) }}			
+				</div>
+	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'pull-left')) }}			
 	{{Form::submit('Delete', array('class' => 'btn btn-danger')) }}
 {{ Form::close() }}
 
