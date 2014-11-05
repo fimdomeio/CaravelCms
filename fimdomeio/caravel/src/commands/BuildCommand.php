@@ -151,6 +151,7 @@ class BuildCommand extends Command {
 			$this->deployDir.'css/admin/style.css'
 		);
 		$this->info('style.css updated');
+		echo "\x07"; //system beep
 	}
 
 	/**
