@@ -23,10 +23,10 @@ Some fields need to be reviewed
 		['value' => 1, 'label' => 'Published', 'checked' => true],
 		['value' => 0, 'label' => 'Draft']
 	])}}
+</fieldset>
 
-
-<div class="col-md-12 text-center">
-	{{Form::submit('Save', array('class' => 'btn btn-success')) }}
+<div class="col-md-12 mmt lmb text-center">
+	{{Form::submit('Save', array('class' => 'btn btn-success btn-lg')) }}
 </div>
 {{ Form::close() }}
 @stop
