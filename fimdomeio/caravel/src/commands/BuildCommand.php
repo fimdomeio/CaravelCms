@@ -40,8 +40,18 @@ class BuildCommand extends Command {
 					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.min.js')
 				],
 				[
+					'path' => $this->caravelDir.'bower_components/bootstrap/dist/js/bootstrap.min.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/bootstrap/dist/js/bootstrap.min.js')
+				],
+
+				[
+					'path' => $this->caravelDir.'bower_components/angular/angular.min.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/angular/angular.min.js')
+				],
+
+				[
 					'path' => $this->caravelDir.'public/js/admin/myscript.js',
-					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.min.js')
+					'mtime' => filemtime($this->caravelDir.'public/js/admin/myscript.js')
 				]
 			];
 
@@ -52,6 +62,16 @@ class BuildCommand extends Command {
 					'path' => $this->caravelDir.'bower_components/jquery/dist/jquery.js',
 					'mtime' => filemtime($this->caravelDir.'bower_components/jquery/dist/jquery.js')
 				],
+				'bootstrap' => [
+					'path' => $this->caravelDir.'bower_components/bootstrap/dist/js/bootstrap.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/bootstrap/dist/js/bootstrap.js')
+				],
+
+				'angular' => [
+					'path' => $this->caravelDir.'bower_components/angular/angular.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/angular/angular.js')
+				],
+
 				'myscript' => [
 					'path' => $this->caravelDir.'public/js/admin/myscript.js',
 					'mtime' => filemtime($this->caravelDir.'public/js/admin/myscript.js')
@@ -59,9 +79,11 @@ class BuildCommand extends Command {
 			];
 
 		$this->jsDevelDest = [
-				'jquery' => $this->deployDir.'js/admin/jquery-devel.js',
-				'myscript' => $this->deployDir.'js/admin/myscript.js'			
-			];
+			'jquery' => $this->deployDir.'js/admin/jquery-devel.js',
+			'bootstrap' => $this->deployDir.'js/admin/bootstrap-devel.js',
+			'angular' => $this->deployDir.'js/admin/angular-devel.js',
+			'myscript' => $this->deployDir.'js/admin/myscript.js'			
+		];
 
 		$this->lessSrc = [
 				'style' => [
@@ -120,6 +142,8 @@ class BuildCommand extends Command {
 		$this->saveAs($contents, $this->jsProdDest);
 
 		$this->copyTo($this->jsDevelSrc['jquery']['path'], $this->jsDevelDest['jquery']);
+		$this->copyTo($this->jsDevelSrc['bootstrap']['path'], $this->jsDevelDest['bootstrap']);
+		$this->copyTo($this->jsDevelSrc['angular']['path'], $this->jsDevelDest['angular']);
 		$this->copyTo($this->jsDevelSrc['myscript']['path'], $this->jsDevelDest['myscript']);
 
 		$less = new lessc;
