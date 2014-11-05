@@ -10,7 +10,7 @@ Some fields need to be reviewed
 </div>
 
 @endif
-{{ Form::open(array('action' => '\Fimdomeio\Caravel\BoatsController@store')) }}
+{{ Form::open(array('action' => '\Fimdomeio\Caravel\BoatsController@store', 'files' => true)) }}
 
 
 <fieldset class="col-md-4">
@@ -19,6 +19,7 @@ Some fields need to be reviewed
 	{{Form::textField('build_date', 'Build Date')}}
 	{{Form::textareaField('description', 'description')}}
 
+	{{ Form::file('image') }}
 	{{Form::radioButtonsField('published', [
 		['value' => 1, 'label' => 'Published', 'checked' => true],
 		['value' => 0, 'label' => 'Draft']
