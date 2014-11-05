@@ -35,6 +35,7 @@ Form::macro('radioButtonsField', function($name, $options){
     <input type="radio" name="'.$name.'" value="'.$option['value'].'" autocomplete="off" '.$checked.'> '.$option['label'].'
   </label>';
 	}
+	$element .=  fieldErrorMessage($name);
 	$element .= '</div>';
 	return $element;
 });
@@ -51,7 +52,7 @@ function fieldLabel($name, $label)
     return $out;
 }
 
-function fieldError($field)
+function fieldErrorClass($field)
 {
     $error = '';
 
@@ -63,13 +64,24 @@ function fieldError($field)
     return $error;
 }
 
+function fieldErrorMessage($field){
+	$errors = Session::get('errors');
+	$errMsg = '';
+	if(isset($errors)){
+		if($errors->first($field)){
+			$errMsg .= '<p class="text-danger">'.$errors->first($field).'</p>';
+		}
+	}
+	return $errMsg;
+}
 
 function fieldWrapper($name, $label, $element)
 {
     $out = '<div class="form-group';
-    $out .= fieldError($name) . '">';
+    $out .= fieldErrorClass($name) . '">';
     $out .= fieldLabel($name, $label);
-    $out .= $element;
+		$out .= $element;
+		$out .= fieldErrorMessage($name);
     $out .= '</div>';
 
     return $out;
