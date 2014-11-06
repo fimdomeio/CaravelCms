@@ -42,12 +42,13 @@ h1 {
 	position: relative;
 	top: 0;
 	left: 0;
-	transition: box-shadow, top, left, 0.1s linear;
-	box-shadow: 	0px 0px 0px 0px #ddd,
-	0px 0px 0px 0px #ddd,
-	0px 0px 0px 0px #ddd,
-	0px 0px 0px 0px #ddd,
-	0px 0px 0px 0px #ddd,
+	transition: box-shadow, top, left, 0.8s linear;
+	transition-delay: 0.5s;
+	box-shadow: 	0px 0px 0px 0px #fff,
+	0px 0px 0px 0px #fff,
+	0px 0px 0px 0px #fff,
+	0px 0px 0px 0px #fff,
+	0px 0px 0px 0px #fff,
 	inset 1px 1px 3px rgba(0,0,0, 0.1); 
 
 }
@@ -59,12 +60,14 @@ h1 {
 	/*height: 42px;*/
 	padding-top: 6px;
 	padding-bottom: 6px;
+	transition: box-shadow, top, left, 0.1s linear;	
 	box-shadow: 
 	1px 1px 0px 0px @input-border-focus,
 	2px 2px 0px 0px @input-border-focus,
 	3px 3px 0px 0px @input-border-focus,
 	4px 4px 0px 0px @input-border-focus,
 	5px 5px 0px 0px @input-border-focus;
+	transition-delay: 0s;
  }
 
 .has-error .form-control:focus {
@@ -74,7 +77,6 @@ h1 {
 	3px 3px 0px 0px darken(@state-danger-border, 10%),
 	4px 4px 0px 0px darken(@state-danger-border, 10%),
 	5px 5px 0px 0px darken(@state-danger-border, 10%);
-
 }
 
  .btn {
