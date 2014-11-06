@@ -13,11 +13,16 @@
 		@yield("content")
 	</div>
 
-	<!-- SCRIPTS -->
+<!-- SCRIPTS -->
+@if (Config::get('app.debug'))
 	<script src='/packages/fimdomeio/caravel/js/admin/jquery-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/bootstrap-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/angular-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/myscript.js' type='text/javascript'></script>
-	<!-- END SCRIPTS -->
+@else
+	<script src='/packages/fimdomeio/caravel/js/admin/script-prod.js' type='text/javascript'></script>
+@endif
+<!-- END SCRIPTS -->
+
 </body>
 </html>
