@@ -33,12 +33,12 @@ class CaravelServiceProvider extends ServiceProvider {
   			'fimdomeio::commands.build'
 		));
 
-		/*$this->app->bind('fimdomeio::commands.test', function($app) {
+		$this->app->bind('fimdomeio::commands.test', function($app) {
 			return new TestCommand();
 		});
 		$this->commands(array(
   			'fimdomeio::commands.test'
-		));*/
+		));
 
 	}
 
