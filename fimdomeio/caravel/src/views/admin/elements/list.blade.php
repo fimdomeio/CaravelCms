@@ -30,7 +30,7 @@
 				<a class="btn btn-default" href='view'>view</a>
 				<a class="btn btn-default" href='edit'>edit</a>
 				</div>
-	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'pull-left')) }}			
+	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'inline-form')) }}			
 	{{Form::submit('Delete', array('class' => 'btn btn-danger')) }}
 {{ Form::close() }}
 
