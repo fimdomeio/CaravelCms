@@ -57,12 +57,18 @@ class BoatsController extends \BaseController {
 		{
 			return \Redirect::back()->withErrors($validator)->withInput();
 		}
-		if (\Input::hasFile('image')){
+		/*if (\Input::hasFile('image')){
+			$realPath = \Input::file('image')->getRealPath();
 			$name = \Input::file('image')->getClientOriginalName();
-    	\Input::file('image')->move(public_path().'/contents/boats', $name);
+			$img = \Image::make($realPath);
+			//dd($img);
+			$img->fit(320,240);
+			$img->save(public_path().'/contents/boats/'.$name);
+    	//\Input::file('image')->move(public_path().'/contents/boats', $name);
+
 			$data['image'] = $name;
-		}
-		Boat::create($data);
+		}*/
+		Boat::create(\Input::all());
 
 		return \Redirect::route('boats.index');
 	}

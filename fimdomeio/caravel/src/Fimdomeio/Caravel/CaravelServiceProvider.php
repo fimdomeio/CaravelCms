@@ -20,6 +20,10 @@ class CaravelServiceProvider extends ServiceProvider {
 	{
 		//Call Other service providers
 		$this->app->register('Way\Generators\GeneratorsServiceProvider');
+		$this->app->register('Codesleeve\LaravelStapler\LaravelStaplerServiceProvider');
+	
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader->alias('Image', '\Intervention\Image\Facades\Image');
 
 		$this->package('fimdomeio/caravel');
 		include __DIR__.'/../../filters.php';
