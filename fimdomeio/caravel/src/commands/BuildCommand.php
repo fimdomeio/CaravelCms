@@ -92,6 +92,7 @@ class BuildCommand extends Command {
 				]
 			];
 
+		$this->lessc = $this->find_command('lessc');
 		parent::__construct();
 	}
 
@@ -102,6 +103,13 @@ class BuildCommand extends Command {
 	 */
 	public function fire()
 	{
+		if($this->lessc){
+			$this->info('lessc Found. Will be used to speed up css generation.');
+		}else{
+			$this->info('lessc Not Found. Will compile css with php lib (slower).'); 
+		
+		}
+
 		// Create folders if they don't exist
 		if(!file_exists($this->deployDir.'js/admin/')){
 			mkdir($this->deployDir.'js/admin/', 0755, true);
@@ -111,16 +119,17 @@ class BuildCommand extends Command {
 		}
 
 		$this->update();
-		if($this->confirm('Do you want keep watching files for further changes? [y|n]')){
-			while(true){
-				sleep(2);
-				clearstatcache(); //clear file mtimes cache
-				if($this->updateMtime($this->jsDevelSrc) ||
-					$this->updateMtime($this->jsProdSrc) ||
-					$this->updateMtime($this->lessSrc)
-				){
-					$this->update();
-				}
+		$this->info('-----------------------------');
+		$this->info("     Now watching for file changes on less and js files inside caravel.\n     Use ctrl+c to quit");
+		$this->info('-----------------------------');
+		while(true){
+			sleep(1);
+			clearstatcache(); //clear file mtimes cache
+			if($this->updateMtime($this->jsDevelSrc) ||
+				$this->updateMtime($this->jsProdSrc) ||
+				$this->updateMtime($this->lessSrc)
+			){
+				$this->update();
 			}
 		}
 	}
@@ -145,11 +154,16 @@ class BuildCommand extends Command {
 		$this->copyTo($this->jsDevelSrc['bootstrap']['path'], $this->jsDevelDest['bootstrap']);
 		$this->copyTo($this->jsDevelSrc['angular']['path'], $this->jsDevelDest['angular']);
 		$this->copyTo($this->jsDevelSrc['myscript']['path'], $this->jsDevelDest['myscript']);
-
-		$less = new lessc;
-		$less->compileFile($this->lessSrc['style']['path'],
-			$this->deployDir.'css/admin/style.css'
-		);
+		
+		if($this->lessc){
+			$cmd = $this->lessc." \"".$this->lessSrc['style']['path']."\" \"".$this->deployDir."css/admin/style.css"."\"";
+			passthru($cmd);
+		}else{
+			$less = new lessc;
+			$less->compileFile($this->lessSrc['style']['path'],
+				$this->deployDir.'css/admin/style.css'
+			);
+		}
 		$this->info('style.css updated');
 		echo "\x07"; //system beep
 	}
@@ -206,4 +220,31 @@ class BuildCommand extends Command {
 
 	}
 
+	//Searches if command exists on system
+	private function find_command ($command) {
+		$whereIsCommand = (PHP_OS == 'WINNT') ? 'where' : 'which';
+
+		$process = proc_open(
+			"$whereIsCommand $command",
+			array(
+				0 => array("pipe", "r"), //STDIN
+				1 => array("pipe", "w"), //STDOUT
+				2 => array("pipe", "w"), //STDERR
+			),
+			$pipes
+		);
+		if ($process !== false) {
+			$stdout = stream_get_contents($pipes[1]);
+			$stderr = stream_get_contents($pipes[2]);
+			fclose($pipes[1]);
+			fclose($pipes[2]);
+			proc_close($process);
+
+			return trim($stdout);
+		}
+
+		return false;
+	}
+
+	
 }
