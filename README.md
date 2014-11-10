@@ -45,6 +45,8 @@ A laravel CMS
 	),
 </pre>
 
+- run `php artisan migrate --bench=fimdomeio/caravel` to install database tables
+
 - run `php artisan build` to compile ant copy assets to their final destinations
 
 - run `php artisan serve` and go to `http://localhost:8000/admin` to test
