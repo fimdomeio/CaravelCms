@@ -1,4 +1,4 @@
-@extends('caravel::admin.layout')
+@extends('caravel::layout')
 
 @if(empty($title))
 	{{{ die('You must provide $this->title on the Controller') }}}
@@ -8,7 +8,7 @@
 
 @section('content')
 
-	<h1>Welcome to the Caravel v0.1 Dashboard.</h1>
+	<h1>Welcome to Caravel v0.1</h1>
 
 	@if(Auth::check())
 		<h4>You are currently logged in as <b>{{ Auth::user()->username }}</b>.</h4>
@@ -20,6 +20,10 @@
 		@else
 			<p><em>Remember me</em> auth feature is inactive.</p>
 		@endif
+
+		<pre>
+          {{{ print_r($menus) }}}
+        </pre>
 
 	@else
 		<h3>You are currently not logged in.</h3>

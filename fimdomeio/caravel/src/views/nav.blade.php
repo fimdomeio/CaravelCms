@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        @foreach( $menus['adminMenu'] as $menuItemName => $menuItemUrl )
+        @foreach( $menus['menu'] as $menuItemName => $menuItemUrl )
           <li><a href="{{ $menuItemUrl }}">{{ $menuItemName }}</a></li>
         @endforeach
         <!--<li class="dropdown">

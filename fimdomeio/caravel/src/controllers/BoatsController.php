@@ -11,7 +11,8 @@ class BoatsController extends \BaseController {
 
 		//example buttons for Index page... if var not present Add is created automagically
 		$this->indexButtons = [
-			['title' => 'add Saillors',
+			[
+				'title' => 'add Saillors',
 				'url' => '/sailors/create'
 			],
 		];
