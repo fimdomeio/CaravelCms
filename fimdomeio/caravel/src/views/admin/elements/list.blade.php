@@ -28,7 +28,7 @@
 			<td>
 				<div class="btn-group pull-left">
 				<a class="btn btn-default" href='view'>view</a>
-				<a class="btn btn-default" href='edit'>edit</a>
+				<a class="btn btn-default" href='/{{strtolower($title)}}/{{$content->id}}/edit'>edit</a>
 				</div>
 	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'inline-form')) }}			
 	{{Form::submit('Delete', array('class' => 'btn btn-danger')) }}

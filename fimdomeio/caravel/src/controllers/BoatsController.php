@@ -41,7 +41,7 @@ class BoatsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return \View::make('caravel::admin.boats.create')->with('title', $this->title);
+		return \View::make('caravel::admin.boats.createedit')->with('title', $this->title);
 	}
 
 	/**
@@ -83,7 +83,7 @@ class BoatsController extends \BaseController {
 	{
 		$boat = Boat::findOrFail($id);
 
-		return View::make('boats.show', compact('boat'));
+		return \View::make('boats.show', compact('boat'));
 	}
 
 	/**
@@ -96,7 +96,7 @@ class BoatsController extends \BaseController {
 	{
 		$boat = Boat::find($id);
 
-		return View::make('boats.edit', compact('boat'));
+		return \View::make('caravel::admin.boats.createedit')->with('title', $this->title)->with('contents', $boat);
 	}
 
 	/**
@@ -108,17 +108,15 @@ class BoatsController extends \BaseController {
 	public function update($id)
 	{
 		$boat = Boat::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Boat::$rules);
-
+		$validator = \Validator::make($data = \Input::all(), Boat::$rules);
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return \Redirect::back()->withErrors($validator)->withInput();
 		}
 
 		$boat->update($data);
 
-		return Redirect::route('boats.index');
+		return \Redirect::route('boats.index');
 	}
 
 	/**
