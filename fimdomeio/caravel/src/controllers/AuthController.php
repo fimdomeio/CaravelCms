@@ -1,9 +1,9 @@
 <?php
 
-namespace Fimdomeio\Caravel;
+//namespace Fimdomeio\Caravel;
 use \Debugbar;
 
-class AuthController extends \BaseController {
+class AuthController extends BaseController {
 
 	/**
 	 * Show Login form
@@ -13,7 +13,7 @@ class AuthController extends \BaseController {
 	public function showLogin()
 	{
 		$title = 'Login';
-		return \View::make('caravel::auth.login')
+		return View::make('caravel::auth.login')
 			->with('title', $title);
 	}
 
@@ -24,7 +24,53 @@ class AuthController extends \BaseController {
 	 */
 	public function doLogin()
 	{
-		//
+		// validate the info, create rules for the inputs
+		$rules = array(
+			'email'    => 'required|email', // make sure the email is an actual email
+			'password' => 'required|min:6' // password can only be alphanumeric and has to be greater than 3 characters
+		);
+
+		// run the validation rules on the inputs from the form
+		$validator = Validator::make(Input::all(), $rules);
+
+		// if the validator fails, redirect back to the form
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withErrors($validator) // send back all errors to the login form
+				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+		} else {
+
+			// create our user data for the authentication
+			$userdata = array(
+				'email' 	=> Input::get('email'),
+				'password' 	=> Input::get('password')
+			);
+
+			// see if remember me is checked.
+			if(null !== Input::get('remember_me')) {
+				$remember_me = true;
+			} else {
+				$remember_me = false;
+			}
+
+			// attempt to do the login
+			if (Auth::attempt($userdata, true)) {
+
+				// Validation successful!
+				// Redirect them to the secure section or whatever.
+				// Return Redirect::intended('admin') to redirect the user to the URL they were trying to access before
+				// being caught by the authentication filter or, if no URL was given, redirect to the admin page.
+				return Redirect::intended('admin');
+
+			} else {
+
+				// validation not successful, send back to form	with errors
+				// return Redirect::to('login')->with('global', 'There was a problem logging you in. Please check your credentials and try again.');
+				return Redirect::back()->withErrors($validator)->withInput();
+
+			}
+
+		}
 	}
 
 
@@ -35,7 +81,8 @@ class AuthController extends \BaseController {
 	 */
 	public function logout()
 	{
-		return \Redirect::route('/');
+		Auth::logout();
+		return Redirect::to('/');
 	}
 
 
@@ -46,7 +93,9 @@ class AuthController extends \BaseController {
 	 */
 	public function showRegister()
 	{
-		return \View::make('caravel::auth.register');
+		$title = 'Register';
+		return View::make('caravel::auth.register')
+			->with('title', $title);
 	}
 
 
@@ -56,16 +105,25 @@ class AuthController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function store($id)
+	public function doRegister()
 	{
-		$validator = Validator::make(Input::all(),['username' => 'required', 'password' => 'required']);
+		$validator = Validator::make(Input::all(),
+			[
+				'username' => 'required|max:15|min:4|unique:users',
+				'email' => 'required|max:50|email|unique:users',
+				'password' => 'required|min:6|confirmed'
+				//'password_confirmation' => 'required|same:password'
+			]
+		);
 
-		if ($validator->fails()) return 'failed validation';
+		if ($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 
 		$user = new User;
-		$user->username = 'simbicort';
-		$user->email = 'jsworkbox@gmail.com';
-		$user->password = Hash::make('changeme');
+		$user->username = Input::get('username');
+		$user->email = Input::get('email');
+		$user->password = Hash::make(Input::get('password'));
 		$user->save();
 
 		/*User::create([
@@ -74,7 +132,7 @@ class AuthController extends \BaseController {
 			'password' => Hash::make('changeme')
 		]);*/
 
-		return \Redirect::route('login');
+		return Redirect::route('auth.login.show');
 	}
 
 
