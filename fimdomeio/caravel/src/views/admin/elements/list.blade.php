@@ -12,8 +12,10 @@
 	<table class="table" cellspacing='0'>
 	<tr>
 	@foreach($fields as $field)
+		@if($field != 'id')
 		<th>{{$field}}</th>
-		@endforeach
+		@endif
+	@endforeach
 		<th class="actions">
 			Actions
 		</th> 
@@ -21,10 +23,13 @@
 	@foreach($contents as $content)
 	<tr>
 		@foreach($fields as $field)
+			@if($field != 'id')
+
 			<td>
 			{{$content->$field}}
 			</td>
-			@endforeach
+			@endif
+		@endforeach
 			<td>
 				<div class="btn-group pull-left">
 				<a class="btn btn-default" href='view'>view</a>
