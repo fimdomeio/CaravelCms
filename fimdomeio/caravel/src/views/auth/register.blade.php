@@ -22,11 +22,12 @@
 	{{ Form::open() }}
 
 	<fieldset class="col-md-4">
-		<legend>Log in to caravel</legend>
+		<legend>Register to caravel</legend>
+		{{ Form::textField('username', 'Username') }}
 		{{ Form::textField('email', 'Email') }}
 		{{ Form::passwordField('password', 'Password') }}
-		{{ Form::checkboxField('remember_me', 'Remember me') }}
-		{{ Form::submit('Log in', array('class' => 'btn btn-success btn-lg')) }}
+		{{ Form::passwordField('password_confirmation', 'Confirm password') }}
+		{{ Form::submit('Register', array('class' => 'btn btn-success btn-lg')) }}
 	</fieldset>
 
 	{{ Form::close() }}
