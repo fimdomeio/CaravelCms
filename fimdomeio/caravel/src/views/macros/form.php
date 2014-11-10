@@ -31,13 +31,20 @@ Form::macro('radioButtonsField', function($name, $options){
 			$active = 'active';
 			$checked= 'checked';
 		}
-	$element .= '<label class="btn btn-default '.$active.'">
-    <input type="radio" name="'.$name.'" value="'.$option['value'].'" autocomplete="off" '.$checked.'> '.$option['label'].'
-  </label>';
+        $element .= '<label class="btn btn-default '.$active.'">';
+        $element .= '<input type="radio" name="'.$name.'" value="'.$option['value'].'" autocomplete="off" '.$checked.'> '.$option['label'];
+        $element .= '</label>';
 	}
 	$element .=  fieldErrorMessage($name);
 	$element .= '</div>';
 	return $element;
+});
+
+Form::macro('checkboxField', function($name, $value)
+{
+    $element = Form::checkbox($name, $value);
+
+    return fieldWrapper($name, $value, $element);
 });
 
 function fieldLabel($name, $label)
@@ -80,8 +87,8 @@ function fieldWrapper($name, $label, $element)
     $out = '<div class="form-group';
     $out .= fieldErrorClass($name) . '">';
     $out .= fieldLabel($name, $label);
-		$out .= $element;
-		$out .= fieldErrorMessage($name);
+        $out .= $element;
+        $out .= fieldErrorMessage($name);
     $out .= '</div>';
 
     return $out;
