@@ -8,6 +8,17 @@
 @endif
 
 <h2>{{$title}}</h2>
+
+<div class="mainActions mmt mmb">
+	@if(!isset($buttons))
+	<a href="{{strtolower($title)}}/create" class="btn btn-primary">add {{str_singular($title)}}</a>
+	@else
+		@foreach($buttons as $button)
+			<a href="{{$button['url']}}" class="btn {{$button['class'] or 'btn-default'}}">{{ $button['title'] }}</a>			
+		@endforeach		
+	@endif
+</div>
+
 @if(!is_null($contents))
 	<table class="table" cellspacing='0'>
 	<tr>
