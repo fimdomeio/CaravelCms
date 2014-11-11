@@ -98,7 +98,13 @@ h1 {
 	3px 3px 0px 0px darken(white, 20%),
 	4px 4px 0px 0px darken(white, 20%),
 	5px 5px 0px 0px darken(white, 20%);
+	margin-right: 6px;
 }
+
+.btn-group .btn {
+	margin-right: 0;
+}
+
 .btn-group .btn:last-child{
 	z-index: 2;
 }
@@ -106,6 +112,16 @@ h1 {
 .btn-group .btn:not(:last-child){
 	z-index: 1;
 }
+
+.btn-primary {
+	box-shadow:
+		1px 1px 0px 0px darken(@btn-primary-bg, 20%),
+		2px 2px 0px 0px darken(@btn-primary-bg, 20%),
+		3px 3px 0px 0px darken(@btn-primary-bg, 20%),
+		4px 4px 0px 0px darken(@btn-primary-bg, 20%),
+		5px 5px 0px 0px darken(@btn-primary-bg, 20%);
+}
+
 
 .btn-success {
 	box-shadow:
@@ -123,6 +139,15 @@ h1 {
 		3px 3px 0px 0px darken(@btn-warning-bg, 20%),
 		4px 4px 0px 0px darken(@btn-warning-bg, 20%),
 		5px 5px 0px 0px darken(@btn-warning-bg, 20%);
+}
+
+.btn-danger {
+	box-shadow:
+		1px 1px 0px 0px darken(@btn-danger-bg, 20%),
+		2px 2px 0px 0px darken(@btn-danger-bg, 20%),
+		3px 3px 0px 0px darken(@btn-danger-bg, 20%),
+		4px 4px 0px 0px darken(@btn-danger-bg, 20%),
+		5px 5px 0px 0px darken(@btn-danger-bg, 20%);
 }
 
 .btn:active, .btn.active {
