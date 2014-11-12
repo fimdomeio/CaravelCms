@@ -40,9 +40,16 @@ class TestCommand extends Command {
 		chdir(getcwd().'/workbench/fimdomeio/caravel');
 		$args = '';
 		if($this->argument('options') == 'append'){
-			$args = '--append-snippets';
+			$args .= ' --append-snippets';
 		}
-		passthru ('vendor/bin/behat '.$args);
+		if($this->argument('options') == 'dl'){
+			$args = ' -dl';
+		}
+		if($this->argument('options') == 'stop-on-failure'){
+			$args = ' --stop-on-failure';
+		}
+
+		passthru ('vendor/bin/behat'.$args);
 	}
 
 	/**

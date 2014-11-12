@@ -59,6 +59,15 @@ class FeatureContext extends MinkContext
 //        doSomethingWith($argument);
 //    }
 //
+
+    /**
+     * @Given /^I have a clean boats table$/
+     */
+    public function iHaveACleanBoatsTable()
+    {
+			Caravel\Boat::truncate();
+    }
+
     /**
      * @Given /^I am Logged in$/
      */
