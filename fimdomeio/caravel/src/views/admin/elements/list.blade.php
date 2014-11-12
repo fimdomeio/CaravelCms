@@ -47,9 +47,15 @@
 				<a class="btn btn-default" href='/{{strtolower($title)}}/{{$content->id}}/edit'>edit</a>
 				</div>
 	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'inline-form')) }}			
-	{{Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+	<span ng-init="showConfirm{{$content->id}}=false">
+	<a class="btn btn-danger" href="#" ng-click="showConfirm{{$content->id}}=true" ng-show="!showConfirm{{$content->id}}">Delete?</a>
+	<span class="btn-group" ng-show="showConfirm{{$content->id}}">
+	<span class="pull-left xsmt mml smr">delete?</span>
+	{{Form::submit('yes', array('class' => 'btn btn-danger')) }}
+	<a href="#" class="btn btn-default" ng-click="showConfirm{{$content->id}}=false">no</a>
+	</span>
 {{ Form::close() }}
-
+	</span>
 			</td>
 	</tr>
 	@endforeach
