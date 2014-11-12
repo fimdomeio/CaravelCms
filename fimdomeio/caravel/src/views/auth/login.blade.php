@@ -26,7 +26,7 @@
 		{{ Form::textField('email', 'Email') }}
 		{{ Form::passwordField('password', 'Password') }}
 		{{ Form::checkboxField('remember_me', 'Remember me') }}
-		{{ Form::submit('Log in', array('class' => 'btn btn-success btn-lg')) }}
+		{{ Form::submit('Log in', array('id' => 'loginSubmitButton', 'class' => 'btn btn-success btn-lg')) }}
 	</fieldset>
 
 	{{ Form::close() }}
