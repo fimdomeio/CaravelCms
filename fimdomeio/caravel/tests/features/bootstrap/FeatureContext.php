@@ -9,12 +9,16 @@ use Behat\Gherkin\Node\PyStringNode,
 		
 use Behat\MinkExtension\Context\MinkContext;
 
+use Fimdomeio\Caravel;
+
 //
 // Require 3rd-party libraries here:
 //
 //   require_once 'PHPUnit/Autoload.php';
 //   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
+		//ADDED BECAUSE DEBUGBAR WAS NOT LOADING
+			require_once  __DIR__ .'/../../../../../../vendor/autoload.php';
 
 /**
  * Features context.
@@ -31,6 +35,18 @@ class FeatureContext extends MinkContext
     {
         // Initialize your context here
     }
+
+		/**
+		 * @static
+		 * @beforeSuite 
+		 */
+		public static function bootstrapLaravel(){
+			$unitTesting     = true;
+			$testEnvironment = 'testing';
+			$app             = require_once  __DIR__ .'/../../../../../../bootstrap/start.php';
+			$app->boot();
+		}
+
 
 //
 // Place your definition and hook methods here:
