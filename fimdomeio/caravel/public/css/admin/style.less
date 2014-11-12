@@ -4,6 +4,10 @@ body {
 	font-weight: 300;
 	background-color: @gray-lighter;
 }
+//AVOID FLASHING ON UMPROCESSED ANGULARJS CONTENT
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
 
 h1 {
 	font-weight: 100;
