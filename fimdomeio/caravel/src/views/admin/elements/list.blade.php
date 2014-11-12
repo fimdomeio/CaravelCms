@@ -18,8 +18,7 @@
 		@endforeach		
 	@endif
 </div>
-
-@if(!is_null($contents))
+@if(!$contents->isEmpty())
 	<table class="table" cellspacing='0'>
 	<tr>
 	@foreach($fields as $field)
@@ -61,7 +60,7 @@
 	@endforeach
 	</table>
 @else
-		<div class="alert alert-info" role="alert">There aren't any {{$title}} yet</div>
+		<div class="alert alert-info text-center lmt" role="alert">There aren't any {{$title}} yet</div>
 @endif 
 
 
