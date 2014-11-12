@@ -38,7 +38,11 @@ class TestCommand extends Command {
 	public function fire()
 	{
 		chdir(getcwd().'/workbench/fimdomeio/caravel');
-		passthru ('vendor/bin/behat');
+		$args = '';
+		if($this->argument('options') == 'append'){
+			$args = '--append-snippets';
+		}
+		passthru ('vendor/bin/behat '.$args);
 	}
 
 	/**
@@ -49,7 +53,7 @@ class TestCommand extends Command {
 	protected function getArguments()
 	{
 		return array(
-			//array('example', InputArgument::REQUIRED, 'An example argument.'),
+			array('options', InputArgument::OPTIONAL, 'behat options.'),
 		);
 	}
 
