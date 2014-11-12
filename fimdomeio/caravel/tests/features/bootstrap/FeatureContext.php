@@ -69,10 +69,44 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @Given /^I am Logged in$/
+     * @Then /^I should be redirected to the login page$/
      */
-    public function iAmLoggedIn()
+    public function iShouldBeRedirectedToTheLoginPage()
     {
-        Auth::loginUsingId(1);
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I am not logged in$/
+     */
+    public function iAmNotLoggedIn()
+    {
+			if(Auth::check()){
+				throw new Exception('User is Logged in');
+			}
+    }
+
+
+    /**
+     * @Then /^I should be logged in as "([^"]*)"$/
+     */
+    public function iShouldBeLoggedInAs($arg1)
+    {
+
+		}
+
+    /**
+     * @Given /^there is a test User$/
+     */
+    public function thereIsATestUser()
+		{
+			$userExists = count(DB::select('select * from users where email = ?', array('test@example.com'))) == 1;
+			if(!$userExists){
+      	$user = new User;
+				$user->username = 'test';
+				$user->email = 'test@example.com';
+				$user->password = Hash::make('testuser');
+				$user->save();
+			}
     }
 }
