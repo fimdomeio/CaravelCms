@@ -59,4 +59,11 @@ class FeatureContext extends MinkContext
 //        doSomethingWith($argument);
 //    }
 //
+    /**
+     * @Given /^I am Logged in$/
+     */
+    public function iAmLoggedIn()
+    {
+        Auth::loginUsingId(1);
+    }
 }
