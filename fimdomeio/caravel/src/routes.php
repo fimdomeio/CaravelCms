@@ -18,11 +18,9 @@ Route::get('admin', array(
 				->with('title', $title);
 		}
 	));
-
-Route::resource('boats', '\Fimdomeio\Caravel\BoatsController', array(
-		'before' => 'auth'
-	));
-
+Route::group(array('before'=>'auth'), function() {   
+	Route::resource('boats', '\Fimdomeio\Caravel\BoatsController');
+});
 
 	/**
 	 * Auth controllers
