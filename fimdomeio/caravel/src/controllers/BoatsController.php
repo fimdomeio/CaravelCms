@@ -17,11 +17,11 @@ class BoatsController extends \BaseController {
 				'class' => 'btn-primary'
 			],
 			[
-				'title' => 'add Saillor',
+				'title' => 'add Sailor',
 				'url' => '/sailors/create'
 			],
 			[
-				'title' => 'list Saillors',
+				'title' => 'list Sailors',
 				'url' => '/sailors/'
 			],
 
