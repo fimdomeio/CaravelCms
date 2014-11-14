@@ -1,8 +1,5 @@
 <?php
 
-namespace Fimdomeio\Caravel;
-use \Debugbar;
-
 class BoatsController extends \BaseController {
 
 	public function __construct(){
@@ -37,7 +34,7 @@ class BoatsController extends \BaseController {
 	{
 		$contents = Boat::all($this->fields);
 
-		return \View::make('caravel::admin.boats.index')
+		return View::make('admin.boats.index')
 			->with('title', $this->title)
 			->with('fields', $this->fields)
 			->with('buttons', $this->indexButtons)
@@ -52,7 +49,7 @@ class BoatsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return \View::make('caravel::admin.boats.createedit')->with('title', $this->title);
+		return View::make('admin.boats.createedit')->with('title', $this->title);
 	}
 
 	/**
@@ -94,7 +91,7 @@ class BoatsController extends \BaseController {
 	{
 		$boat = Boat::findOrFail($id);
 
-		return \View::make('boats.show', compact('boat'));
+		return View::make('boats.show', compact('boat'));
 	}
 
 	/**
@@ -107,7 +104,7 @@ class BoatsController extends \BaseController {
 	{
 		$boat = Boat::find($id);
 
-		return \View::make('caravel::admin.boats.createedit')->with('title', $this->title)->with('contents', $boat);
+		return View::make('admin.boats.createedit')->with('title', $this->title)->with('contents', $boat);
 	}
 
 	/**

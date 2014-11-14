@@ -5,7 +5,7 @@
 Route::get('/', function()
 	{
 		$title = 'Home';
-		return View::make('caravel::home')
+		return View::make('home')
 			->with('title', $title);
 	});
 
@@ -14,12 +14,12 @@ Route::get('admin', array(
 	function()
 		{
 			$title = 'Dashboard';
-			return View::make('caravel::admin.dashboard')
+			return View::make('admin.dashboard')
 				->with('title', $title);
 		}
 	));
 Route::group(array('before'=>'auth'), function() {   
-	Route::resource('boats', '\Fimdomeio\Caravel\BoatsController');
+	Route::resource('boats', 'BoatsController');
 });
 
 	/**
@@ -31,29 +31,29 @@ Route::group(array('before'=>'auth'), function() {
 Route::get('login', array(
 	'before' => 'guest',
 	'as' => 'auth.login.show',
-	'uses' => 'AuthController@showLogin'
+	'uses' => '\AuthController@showLogin'
 	));
 
 Route::post('login', array(
 	'before' => 'guest',
 	'as' => 'auth.login.do',
-	'uses' => 'AuthController@doLogin'
+	'uses' => '\AuthController@doLogin'
 	));
 
 Route::get('logout', array(
 	'before' => 'auth',
 	'as' => 'auth.logout.do',
-	'uses' => 'AuthController@logout'
+	'uses' => '\AuthController@logout'
 	));
 
 Route::get('register', array(
 	'before' => 'guest',
 	'as' => 'auth.register.show',
-	'uses' => 'AuthController@showRegister'
+	'uses' => '\AuthController@showRegister'
 	));
 
 Route::post('register', array(
 	'before' => 'guest',
 	'as' => 'auth.register.do',
-	'uses' => 'AuthController@doRegister'
+	'uses' => '\AuthController@doRegister'
 	));

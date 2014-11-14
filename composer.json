@@ -13,13 +13,8 @@
 				"codesleeve/laravel-stapler": "1.0.*"
     },
     "require-dev": {
-        "oyejorge/less.php": "~1.5",
-        "behat/behat": "2.5.*@stable",
-        "behat/mink": "1.5.*@stable",
-        "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*",
-				"behat/mink-selenium2-driver": "*"
-    },
+        "oyejorge/less.php": "~1.5"
+       },
     "autoload": {
         "classmap": [
             "src/migrations",

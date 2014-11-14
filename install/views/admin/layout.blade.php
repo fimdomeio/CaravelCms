@@ -8,7 +8,7 @@
 	<link href='/packages/fimdomeio/caravel/css/admin/style.css' rel='stylesheet' />
 </head>
 <body ng-cloak>
-	@include("caravel::admin.nav")
+	@include("admin.nav")
 	<div class="lmt container-fluid">
 		@yield("content")
 	</div>

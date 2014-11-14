@@ -1,4 +1,5 @@
-<?php namespace Fimdomeio\Caravel;
+<?php 
+namespace Fimdomeio\Caravel;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,15 +20,13 @@ class CaravelServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		//Call Other service providers
-		$this->app->register('Codesleeve\LaravelStapler\LaravelStaplerServiceProvider');
 	
-		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('Image', '\Intervention\Image\Facades\Image');
+		//$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
 		$this->package('fimdomeio/caravel');
 		include __DIR__.'/../../filters.php';
 		include __DIR__.'/../../routes.php';
-		include __DIR__.'/../../views/macros/form.php';
+		include app_path().'/views/macros/form.php';
 
 		$this->app->bind('fimdomeio::commands.build', function($app) {
    			return new BuildCommand();

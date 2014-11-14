@@ -13,7 +13,7 @@ class AuthController extends BaseController {
 	public function showLogin()
 	{
 		$title = 'Login';
-		return View::make('caravel::auth.login')
+		return View::make('auth.login')
 			->with('title', $title);
 	}
 
@@ -94,7 +94,7 @@ class AuthController extends BaseController {
 	public function showRegister()
 	{
 		$title = 'Register';
-		return View::make('caravel::auth.register')
+		return View::make('auth.register')
 			->with('title', $title);
 	}
 

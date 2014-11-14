@@ -1,11 +1,10 @@
 <?php
-//use Codesleeve\Stapler\ORM\StaplerableInterface;
-//use Codesleeve\Stapler\ORM\EloquentTrait;
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-namespace Fimdomeio\Caravel;
-class Boat extends \Eloquent implements \Codesleeve\Stapler\ORM\StaplerableInterface {
+class Boat extends Eloquent implements StaplerableInterface {
 
-	 use \Codesleeve\Stapler\ORM\EloquentTrait;
+	 use EloquentTrait;
 	// Add your validation rules here
 	public static $rules = [
 		'name' => 'required',

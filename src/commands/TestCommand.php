@@ -11,7 +11,7 @@ class TestCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'test';
+	protected $name = 'caravel:test';
 
 	/**
 	 * The console command description.
@@ -37,7 +37,7 @@ class TestCommand extends Command {
 	 */
 	public function fire()
 	{
-		chdir(getcwd().'/workbench/fimdomeio/caravel');
+		chdir(base_path());
 		$args = '';
 		if($this->argument('options') == 'append'){
 			$args .= ' --append-snippets';

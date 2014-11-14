@@ -13,7 +13,7 @@ class BuildCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'build';
+	protected $name = 'caravel:build';
 
 	/**
 	 * The console command description.

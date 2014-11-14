@@ -1,33 +1,22 @@
-@extends('caravel::admin.layout')
+@extends('admin.layout')
 
-
-@section('content')
-<h1>
-@if(!isset($contents))
-	Add 
-@else
-	Edit
+@if(empty($title))
+	{{{die('You must provide $this->title on the Controller')}}}
 @endif
 
-{{str_singular($title)}}</h1>
+@section('title'){{ $title }}@stop
+
+@section('content')
+<h1>Add {{str_singular($title)}}</h1>
 @if($errors->has())
 <div class="alert alert-danger col-md-12" role="alert">
 <b>Could not save {{str_singular($title)}}</b><br/>
 Some fields need to be reviewed
 </div>
-@endif
 
-@if(!isset($contents))
-	{{ Form::open(array('action' => '\Fimdomeio\Caravel\BoatsController@store', 'files' => true)) }}
-	@else
-	{{ Form::model($contents, 
-array(
-			'route' => array('boats.update', $contents->id),
-			'files' => true,
-			'method' => 'put'
-		)
-	)}}
 @endif
+{{ Form::open(array('action' => '\Fimdomeio\Caravel\BoatsController@store')) }}
+
 
 <fieldset class="col-md-4">
 	<legend>Basic Info</legend>
@@ -35,13 +24,6 @@ array(
 	{{Form::textField('build_date', 'Build Date')}}
 	{{Form::textareaField('description', 'description')}}
 
-@if(isset($contents))
-	@if(!empty($contents->image->url('thumb')))
-		<img src="{{$contents->image->url('thumb') }}" />
-	@endif
-@endif
-
-	{{ Form::file('image') }}
 	{{Form::radioButtonsField('published', [
 		['value' => 1, 'label' => 'Published', 'checked' => true],
 		['value' => 0, 'label' => 'Draft']

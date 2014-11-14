@@ -1,4 +1,4 @@
-@extends('caravel::admin.layout')
+@extends('admin.layout')
 
 @if(empty($title))
 	{{{die('You must provide $this->title on the Controller')}}}
@@ -6,6 +6,6 @@
 @section('title'){{ $title }}@stop
 
 @section('content')
-	@include('caravel::admin.elements.list')
+	@include('admin.elements.list')
 
 @stop
