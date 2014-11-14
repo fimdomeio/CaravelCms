@@ -48,7 +48,10 @@ class BuildCommand extends Command {
 					'path' => $this->caravelDir.'bower_components/angular/angular.min.js',
 					'mtime' => filemtime($this->caravelDir.'bower_components/angular/angular.min.js')
 				],
-
+				[
+					'path' => $this->caravelDir.'bower_components/angular-animate/angular-animate.min.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/angular-animate/angular-animate.min.js')
+				],
 				[
 					'path' => $this->caravelDir.'public/js/admin/myscript.js',
 					'mtime' => filemtime($this->caravelDir.'public/js/admin/myscript.js')
@@ -71,7 +74,10 @@ class BuildCommand extends Command {
 					'path' => $this->caravelDir.'bower_components/angular/angular.js',
 					'mtime' => filemtime($this->caravelDir.'bower_components/angular/angular.js')
 				],
-
+				'angularAnimate' => [
+					'path' => $this->caravelDir.'bower_components/angular-animate/angular-animate.js',
+					'mtime' => filemtime($this->caravelDir.'bower_components/angular-animate/angular-animate.js')
+				],
 				'myscript' => [
 					'path' => $this->caravelDir.'public/js/admin/myscript.js',
 					'mtime' => filemtime($this->caravelDir.'public/js/admin/myscript.js')
@@ -82,6 +88,7 @@ class BuildCommand extends Command {
 			'jquery' => $this->deployDir.'js/admin/jquery-devel.js',
 			'bootstrap' => $this->deployDir.'js/admin/bootstrap-devel.js',
 			'angular' => $this->deployDir.'js/admin/angular-devel.js',
+			'angularAnimate' => $this->deployDir.'js/admin/angular-animate-devel.js',
 			'myscript' => $this->deployDir.'js/admin/myscript.js'			
 		];
 
@@ -153,6 +160,7 @@ class BuildCommand extends Command {
 		$this->copyTo($this->jsDevelSrc['jquery']['path'], $this->jsDevelDest['jquery']);
 		$this->copyTo($this->jsDevelSrc['bootstrap']['path'], $this->jsDevelDest['bootstrap']);
 		$this->copyTo($this->jsDevelSrc['angular']['path'], $this->jsDevelDest['angular']);
+		$this->copyTo($this->jsDevelSrc['angularAnimate']['path'], $this->jsDevelDest['angularAnimate']);
 		$this->copyTo($this->jsDevelSrc['myscript']['path'], $this->jsDevelDest['myscript']);
 		
 		if($this->lessc){

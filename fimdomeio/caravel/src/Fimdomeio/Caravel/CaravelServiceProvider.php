@@ -19,7 +19,6 @@ class CaravelServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		//Call Other service providers
-		$this->app->register('Way\Generators\GeneratorsServiceProvider');
 		$this->app->register('Codesleeve\LaravelStapler\LaravelStaplerServiceProvider');
 	
 		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
