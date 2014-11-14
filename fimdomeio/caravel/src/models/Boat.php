@@ -23,7 +23,6 @@ class Boat extends \Eloquent implements \Codesleeve\Stapler\ORM\StaplerableInter
         'thumb' => '100x100'
     	]
     ]);
-
     parent::__construct($attributes);
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en' ng-app>
+<html lang='en' ng-app="myApp">
 <head>
 	<meta charset='UTF-8' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +12,12 @@
 	<div class="lmt container-fluid">
 		@yield("content")
 	</div>
-
 <!-- SCRIPTS -->
 @if (Config::get('app.debug'))
 	<script src='/packages/fimdomeio/caravel/js/admin/jquery-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/bootstrap-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/angular-devel.js' type='text/javascript'></script>
+	<script src='/packages/fimdomeio/caravel/js/admin/angular-animate-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/myscript.js' type='text/javascript'></script>
 @else
 	<script src='/packages/fimdomeio/caravel/js/admin/script-prod.js' type='text/javascript'></script>

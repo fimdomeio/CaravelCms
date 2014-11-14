@@ -8,7 +8,6 @@
 @endif
 
 <h2>{{$title}}</h2>
-
 <div class="mainActions mmt mmb">
 	@if(!isset($buttons))
 	<a href="{{strtolower($title)}}/create" class="btn btn-primary">add {{str_singular($title)}}</a>
