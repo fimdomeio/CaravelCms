@@ -17,9 +17,7 @@
        },
     "autoload": {
         "classmap": [
-            "src/commands",
-            "src/controllers",
-            "src/models"
+            "src/commands"
         ],
         "psr-0": {
             "Fimdomeio\\Caravel\\": "src/"
