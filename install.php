@@ -52,7 +52,7 @@ recurse_copy($caravelPath.'/install/tests',
 
 if(!file_exists($basePath.'/tests.php')){
 	copy($caravelPath.'/install/tests.php',
-		$basePath.'/tests.php');
+		$basePath.'/tests');
 }
 if(!file_exists($appPath.'/admin-menu.php')){
 	echo "\nadding admin menu\n";
@@ -82,10 +82,11 @@ chdir($basePath);
 passthru($php.' artisan dump-autoload');
 
 	echo "\n\nWe're almost done.\n Please configure your DB at app/config/database.php\n";
-	echo "Then run 'php artisan migrate' to create the db tables\n";
+	echo "Then run 'php artisan migrate' to generate the db tables\n";
+	echo "Then 'php artisan caravel:build' to generate the css and js assets\n";
 	echo "\n\n	!!! And we're all set !!!\n";
-	echo "run php tests to run the tests";
-	echo "just run 'php artisan serve' to run the site";
+	echo "Run 'php tests' to run the behat tests;\n";
+	echo "Run 'php artisan serve' to run the site.\nVisit http://localhost:8000/register to create your first user";
 
 function addProvider($provider, $configPath){
 		$providersMarker = '// § CARAVEL PROVIDER MARKER § //';
