@@ -17,6 +17,8 @@ A laravel CMS
 <br/><br/>
 ## Install
 
+dependencies: [composer](https://getcomposer.org/), [php5 curl libraries](http://askubuntu.com/questions/9293/how-do-i-install-curl-in-php5)
+
 - Install Laravel as described on [Laravel Documentation](http://laravel.com/docs/4.2/quick) (our favorite is `laravel new projectname`);
 
 - Install Caravel `git clone https://github.com/fimdomeio/CaravelCms.git workbench/fimdomeio/caravel/`;
