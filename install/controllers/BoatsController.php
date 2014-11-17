@@ -1,6 +1,6 @@
 <?php
 
-class BoatsController extends \BaseController {
+class BoatsController extends BaseController {
 
 	public function __construct(){
 		$this->title  = 'Boats'; //page title
@@ -59,11 +59,11 @@ class BoatsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = \Validator::make($data = \Input::all(), Boat::$rules);
+		$validator = Validator::make($data = Input::all(), Boat::$rules);
 
 		if ($validator->fails())
 		{
-			return \Redirect::back()->withErrors($validator)->withInput();
+			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		/*if (\Input::hasFile('image')){
 			$realPath = \Input::file('image')->getRealPath();
@@ -76,9 +76,9 @@ class BoatsController extends \BaseController {
 
 			$data['image'] = $name;
 		}*/
-		Boat::create(\Input::all());
+		Boat::create(Input::all());
 
-		return \Redirect::route('boats.index');
+		return Redirect::route('boats.index');
 	}
 
 	/**
@@ -116,15 +116,15 @@ class BoatsController extends \BaseController {
 	public function update($id)
 	{
 		$boat = Boat::findOrFail($id);
-		$validator = \Validator::make($data = \Input::all(), Boat::$rules);
+		$validator = Validator::make($data = Input::all(), Boat::$rules);
 		if ($validator->fails())
 		{
-			return \Redirect::back()->withErrors($validator)->withInput();
+			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
 		$boat->update($data);
 
-		return \Redirect::route('boats.index');
+		return Redirect::route('boats.index');
 	}
 
 	/**
@@ -137,7 +137,7 @@ class BoatsController extends \BaseController {
 	{
 		Boat::destroy($id);
 
-		return \Redirect::route('boats.index');
+		return Redirect::route('boats.index');
 	}
 
 }

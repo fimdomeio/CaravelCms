@@ -1,7 +1,7 @@
 <?php
 
 //namespace Fimdomeio\Caravel;
-use \Debugbar;
+use Debugbar;
 
 class AuthController extends BaseController {
 
