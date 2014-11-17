@@ -8,7 +8,7 @@
 	<link href='/packages/fimdomeio/caravel/css/admin/style.css' rel='stylesheet' />
 </head>
 <body>
-	@include("caravel::nav")
+	@include("nav")
 	<div class="lmt container-fluid">
 		@yield("content")
 	</div>

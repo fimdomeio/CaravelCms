@@ -1,4 +1,4 @@
-@extends('caravel::layout')
+@extends('layout')
 
 @if(empty($title))
 	{{{ die('You must provide $this->title on the Controller') }}}
