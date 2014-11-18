@@ -1,6 +1,5 @@
 <?php
 
-//namespace Fimdomeio\Caravel;
 use Debugbar;
 
 class AuthController extends BaseController {

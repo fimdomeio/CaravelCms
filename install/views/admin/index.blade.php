@@ -6,6 +6,6 @@
 
 @section('content')
 	<a href="{{strtolower($title)}}/create" class="btn btn-primary">add {{str_singular($title)}}</a>
-	@include('caravel::admin.elements.list')
+	@include('admin.elements.list')
 
 @stop

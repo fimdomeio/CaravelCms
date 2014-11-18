@@ -15,7 +15,7 @@ Feature: Boats
 	Scenario: I access the boats index page
 		Given I have a clean boats table
 		And I am on "/boats"
-		Then I should not see "Log in to caravel"
+		Then I should not see "Log in to"
 		And I should see "There aren't any Boats yet"
 
 	Scenario: I try to add a boat but fail Validation

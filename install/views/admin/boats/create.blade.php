@@ -15,7 +15,7 @@ Some fields need to be reviewed
 </div>
 
 @endif
-{{ Form::open(array('action' => '\Fimdomeio\Caravel\BoatsController@store')) }}
+{{ Form::open(array('action' => 'BoatsController@store')) }}
 
 
 <fieldset class="col-md-4">
