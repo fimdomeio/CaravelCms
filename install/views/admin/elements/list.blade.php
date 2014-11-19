@@ -44,7 +44,7 @@
 				<a class="btn btn-default" href='view'>view</a>
 				<a class="btn btn-default" href='/{{strtolower($title)}}/{{$content->id}}/edit'>edit</a>
 				</div>
-	{{ Form::open(array('route' => array('boats.destroy', $content->id), 'method' => 'delete', 'class' => 'inline-form')) }}			
+	{{ Form::open(array('route' => array( Request::segments()[0].'.destroy', $content->id), 'method' => 'delete', 'class' => 'inline-form')) }}			
 	<span ng-init="showConfirm{{$content->id}}=false">
 	<a class="btn btn-danger" href="#" ng-click="showConfirm{{$content->id}}=true" ng-show="!showConfirm{{$content->id}}">Delete?</a>
 	<span class="btn-group" ng-show="showConfirm{{$content->id}}">
