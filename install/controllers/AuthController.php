@@ -1,7 +1,5 @@
 <?php
 
-use Debugbar;
-
 class AuthController extends BaseController {
 
 	/**
