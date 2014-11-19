@@ -49,6 +49,7 @@ Form::macro('checkboxField', function($name, $value)
 
 Form::macro('selectField', function($name, $label, $options, $default = null)
 {
+		$options = [0 => '']+$options;
     $element = '<select name="'.$name.'">';
     foreach($options as $option_key => $option_value)
     {
@@ -56,13 +57,22 @@ Form::macro('selectField', function($name, $label, $options, $default = null)
             $element .= '<optgroup label="'.$option_key.'">';
             foreach($option_value as $suboption_key => $suboption_value)
             {
-                $element .= '<option value="'.$suboption_key.'">';
+							$selected = '';
+							if($suboption_key == $default){
+							$selected = ' selected="selected" ';
+							}
+                $element .= '<option value="'.$suboption_key.'"'.$selected.'>';
                 $element .= $suboption_value;
                 $element .= '</option>';
             }
             $element .= '</optgroup>';
         } else {
-            $element .= '<option value="'.$option_key.'">';
+					  $selected = '';
+						if($option_key == $default){
+							$selected = ' selected="selected" ';
+						}
+
+            $element .= '<option value="'.$option_key.'"'.$selected.'>';
             $element .= $option_value;
             $element .= '</option>';
         }
