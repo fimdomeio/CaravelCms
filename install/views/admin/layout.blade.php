@@ -19,7 +19,6 @@
 	<script src='/packages/fimdomeio/caravel/js/admin/angular-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/angular-animate-devel.js' type='text/javascript'></script>
 	<script src='/packages/fimdomeio/caravel/js/admin/myscript.js' type='text/javascript'></script>
-	<script src="http://{{$_SERVER['SERVER_NAME']}}:35729/livereload.js?snipver=1"></script>
 @else
 	<script src='/packages/fimdomeio/caravel/js/admin/script-prod.js' type='text/javascript'></script>
 @endif
