@@ -1,7 +1,7 @@
 fimdomeio base Vagrant config
 ==============================
 
-My default Vagrant machine for web development (ubuntu/trusty32, nginx, php, mysql)
+My base Vagrant machine for web development (**ubuntu/trusty32**, **nginx**, **php**, **mysql**)
 
 
 Detailed list of istalled and configured packages:
@@ -14,9 +14,9 @@ Detailed list of istalled and configured packages:
 
 
 Will automatically forward following ports to your machine if they are not already taken:
-22 -> 2222 ssh (but it's easier to just run `vagrant ssh`)
-80 -> 8000 http
-3306 -> 3306 mysql
-9000 -> 9000 xdebug
+- 22 -> **2222** ssh (but it's easier to just run `vagrant ssh`)
+- 80 -> **8000** http
+- 3306 -> **3306** mysql
+- 9000 -> **9000** xdebug
 
-It will also expose the vm on 192.168.33.10
+It will also expose the vm on **192.168.33.10**
