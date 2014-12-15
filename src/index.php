@@ -1,11 +1,4 @@
 <?php 
-ini_set('display_errors', 1);
-  error_reporting(E_ALL);
-$temp = 'hello';
-$cenas = 0;
-var_dump($temp);
-
-echo $temp; 
-echo 'aaaaaaaa';
-echo 'bbb';
+echo '<p><a href="http://www.fimdomeio.com">Fimdomeio</a> base <a href="https://github.com/fimdomeio/fimdomeioDefaultVagrant">Vagrant project</a>.</p>
+<p>The file you\'re looking at lives on the \'src\' dir. Go crazy</p>';
 ?>
