@@ -1,8 +1,17 @@
 fimdomeio base Vagrant config
 ==============================
-
 My base Vagrant machine for web development (**ubuntu/trusty32**, **nginx**, **php**, **mysql**)
 
+
+How to use
+----------
+1. install virtualbox and vagrant;
+2. Run `vagrant up`;
+3. go take a coffee and everything will be setup when you return.
+
+
+Bateries Included
+------------------
 
 Detailed list of istalled and configured packages:
 - nginx
