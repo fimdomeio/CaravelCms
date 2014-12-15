@@ -20,6 +20,9 @@ apt-get install php5-xdebug -y
 echo "Installing PHP extensions"
 apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql -y
 
+mv '/etc/php5/fpm/php.ini' '/etc/php5/fpm/php.original'
+cp '/usr/share/php5/php.ini-development' '/etc/php5/fpm/php.ini'
+service php-fpm restart
 
 apt-get install debconf-utils -y
 
