@@ -7,7 +7,7 @@ How to use
 ----------
 1. install virtualbox and vagrant;
 2. Run `vagrant up`;
-3. go take a coffee and everything will be setup when you return.
+3. go take a coffee and everything will be setup in 5/10min.
 
 
 Bateries Included
