@@ -21,6 +21,8 @@ rm /etc/php5/cli/conf.d/20-xdebug.ini
 echo "Installing PHP extensions"
 apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql -y
 
+php5enmod mcrypt
+
 mv '/etc/php5/fpm/php.ini' '/etc/php5/fpm/php.original'
 cp '/usr/share/php5/php.ini-development' '/etc/php5/fpm/php.ini'
 service php-fpm restart
