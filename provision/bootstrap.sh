@@ -55,7 +55,7 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 echo "installing laravel"
-sudo -u vagrant composer global require "laravel/installer=~1.1"
+su -c 'composer global require "laravel/installer=~1.1"' vagrant
 
 #link for web directory
 ln -s /vagrant/src /home/vagrant/www
