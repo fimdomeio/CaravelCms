@@ -72,6 +72,8 @@ ln -s /vagrant/src /home/vagrant/www
    echo 'PATH="~/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
  fi
 
+ updatedb
+
 echo "if they where available on your machine you'll have:"
 echo " - a webserver on local port 8000"
 echo " - xdebug on local port 9000"
