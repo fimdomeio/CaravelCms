@@ -25,7 +25,7 @@ php5enmod mcrypt
 
 mv '/etc/php5/fpm/php.ini' '/etc/php5/fpm/php.original'
 cp '/usr/share/php5/php.ini-development' '/etc/php5/fpm/php.ini'
-service php-fpm restart
+service php5-fpm restart
 
 apt-get install debconf-utils -y
 
