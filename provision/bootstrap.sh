@@ -38,7 +38,7 @@ apt-get install mysql-server -y
 sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
 mysql -u root -plocalpassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'localpassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 sudo /etc/init.d/mysql restart
-
+mysql -uroot -plocalpassword -e 'create database localdatabase;'
 
 #echo "installing nodejs and gulp"
 #apt-get install nodejs npm -y 
