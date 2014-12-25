@@ -49,6 +49,26 @@ ln -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
 rm -rf /etc/nginx/sites-available/default
  
 service nginx restart
+
+echo "installing composer"
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
+echo "installing laravel"
+sudo -u vagrant composer global require "laravel/installer=~1.1"
+
+#link for web directory
+ln -s /vagrant/src /home/vagrant/www
+
+ if ! grep -q 'cd /vagrant/src' "/home/vagrant/.profile"; then
+   echo 'cd /vagrant/src' >> /home/vagrant/.profile
+ fi
+
+
+ if ! grep -q 'PATH="~/.composer/vendor/bin:$PATH"' "/home/vagrant/.profile"; then
+   echo 'PATH="~/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
+ fi
+
 echo "if they where available on your machine you'll have:"
 echo " - a webserver on local port 8000"
 echo " - xdebug on local port 9000"
