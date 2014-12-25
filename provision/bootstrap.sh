@@ -16,7 +16,8 @@ apt-get install php5-common php5-dev php5-cli php5-fpm -y
 echo "installing xdebug"
 apt-get install php5-xdebug -y
 #Duplicates settings on --provision cat /var/www/provision/config/xdebug >> /etc/php5/fpm/php.ini
- 
+rm /etc/php5/cli/conf.d/20-xdebug.ini 
+
 echo "Installing PHP extensions"
 apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql -y
 
