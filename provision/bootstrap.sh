@@ -19,7 +19,7 @@ apt-get install php5-xdebug -y
 rm /etc/php5/cli/conf.d/20-xdebug.ini 
 
 echo "Installing PHP extensions"
-apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql -y
+apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql php5-imagick -y
 
 php5enmod mcrypt
 
