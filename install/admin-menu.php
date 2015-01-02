@@ -1,4 +1,0 @@
-<?php
-$adminMenu = [
-	'boats' => '/boats'
-	];
