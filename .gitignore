@@ -6,7 +6,7 @@ node_modules
 Thumbs.db
 composer.lock
 composer.phar
-/bootstrap/compiled.php
+bootstrap/compiled.php
 .env.*.php
 .env.php
 
@@ -24,4 +24,7 @@ database.sqlite
 
 
 
-/.project
+.project
+src/
+
+.vagrant/
