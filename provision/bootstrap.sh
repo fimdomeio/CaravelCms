@@ -48,6 +48,8 @@ mysql -uroot -plocalpassword -e 'create database localdatabase;'
 #ln /usr/bin/nodejs /usr/bin/node
 #npm install -g gulp
 echo "Configuring Nginx"
+rm /etc/nginx/sites-available/nginx_vhost 2> /dev/null
+rm /etc/nginx/sites-enabled/nginx_vhost 2> /dev/null
 cp /var/www/provision/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost
  
 ln -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
@@ -57,14 +59,15 @@ rm -rf /etc/nginx/sites-available/default
 service nginx restart
 
 echo "installing composer"
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+if [ ! -f "/usr/local/bin/composer" ]; then echo "installing composer"; curl -sS https://getcomposer.org/installer | php; mv composer.phar /usr/local/bin/composer; fi
 
 echo "installing laravel"
 su -c 'composer global require "laravel/installer=~1.1"' vagrant
 
 #link for web directory
-ln -s /vagrant/src /home/vagrant/www
+ln -s /vagrant/src /home/vagrant/www 2> /dev/null
+
+
 
  if ! grep -q 'cd /vagrant/src' "/home/vagrant/.profile"; then
    echo 'cd /vagrant/src' >> /home/vagrant/.profile
