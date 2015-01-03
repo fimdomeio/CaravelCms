@@ -25,6 +25,5 @@ database.sqlite
 
 
 .project
-src/
 
 .vagrant/
