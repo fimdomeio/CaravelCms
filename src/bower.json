@@ -1,0 +1,9 @@
+{
+  "name": "Caravel CMS",
+  "version": "0.2",
+  "dependencies": {
+    "bootstrap": "~3.0.0",
+    "angular-bootstrap": "~0.*"
+  },
+  "private": true
+}
