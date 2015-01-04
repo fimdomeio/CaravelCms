@@ -10,6 +10,9 @@ if [ $((start-lastUpdate)) -gt 86400 ]; then apt-get update; apt-get -y upgrade;
  
 echo "Provisioning virtual machine..."
 
+echo "Installing git"
+apt-get install git -y
+
 echo "Installing Nginx"
 apt-get install nginx -y
 
@@ -36,6 +39,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password password loc
  
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password localpassword"
 
+echo "Installing Mysql"
 apt-get install mysql-server -y
 
 sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
@@ -43,10 +47,13 @@ mysql -u root -plocalpassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDEN
 sudo /etc/init.d/mysql restart
 mysql -uroot -plocalpassword -e 'create database localdatabase;' 2> /dev/null
 
-#echo "installing nodejs and gulp"
-#apt-get install nodejs npm -y 
-#ln /usr/bin/nodejs /usr/bin/node
-#npm install -g gulp
+echo "Installing nodejs npm bower and gulp"
+apt-get install nodejs npm -y
+if [ ! -f "/usr/bin/node" ]; then ln /usr/bin/nodejs /usr/bin/node ; fi;
+
+if [ ! -f "/usr/local/bin/bower" ]; then npm install -g bower; fi;
+if [ ! -f "/usr/local/bin/gulp" ]; then npm install -g gulp; fi;
+
 echo "Configuring Nginx"
 rm /etc/nginx/sites-available/nginx_vhost 2> /dev/null
 rm /etc/nginx/sites-enabled/nginx_vhost 2> /dev/null
