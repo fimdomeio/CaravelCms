@@ -32,3 +32,8 @@ Will automatically forward following ports to your machine if they are not alrea
 - 9000 -> **9000** xdebug
 
 It will also expose the vm on **192.168.33.10**
+
+
+Goodies
+-------------------
+We suggest installing hostupdater plugin by running `vagrant plugin install vagrant-hostsupdater`. It will update your hosts file automatically exposing the machine as www.fimdomeio.dev
