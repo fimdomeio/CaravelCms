@@ -18,8 +18,11 @@ Detailed list of istalled and configured packages:
 - php5-common php5-dev php5-cli php5-fpm php5-xdebug
 - curl php5-curl 
 - php5-gd php5-mcrypt php5-mysql
+- laravel installer
 - debconf-utils
 - mysql-server
+- git
+- nodejs npm gulp bower
 
 
 Will automatically forward following ports to your machine if they are not already taken:
