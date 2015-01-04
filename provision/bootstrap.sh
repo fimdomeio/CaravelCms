@@ -65,7 +65,7 @@ echo "installing laravel"
 su -c 'composer global require "laravel/installer=~1.1"' vagrant
 
 #link for web directory
-ln -s /vagrant/src /home/vagrant/www 2> /dev/null
+if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
 
 
 
