@@ -1,10 +1,4 @@
 #!/bin/bash
 
-
-cd /vagrant
-npm install
-
-cd /vagrant/src/
-/usr/local/bin/composer update;
 /usr/bin/php /vagrant/src/artisan migrate --package=rydurham/sentinel
 /usr/bin/php /vagrant/src/artisan db:seed --class="SentinelDatabaseSeeder"
