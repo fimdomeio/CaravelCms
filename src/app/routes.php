@@ -17,7 +17,7 @@
     return View::make('hello');
 }));
 
-
+Route::get('/admin/api/caravel/issues', 'CaravelController@issues');
 
 
 Route::get('/users/isAuthorized', 'UsersController@isAuthorized');
