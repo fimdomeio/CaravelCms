@@ -81,11 +81,12 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
  fi
 
 
- if ! grep -q 'PATH="~/.composer/vendor/bin:$PATH"' "/home/vagrant/.profile"; then
-   echo 'PATH="~/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
+ if ! grep -q 'PATH="~/.composer/vendor/bin:/vagrant/bin:$PATH"' "/home/vagrant/.profile"; then
+   echo 'PATH="~/.composer/vendor/bin:/vagrant/bin:$PATH"' >> /home/vagrant/.profile
  fi
 
  updatedb
+
 
 echo "if they where available on your machine you'll have:"
 echo " - a webserver on local port 8000"
