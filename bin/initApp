@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/php /vagrant/src/artisan migrate --package=rydurham/sentinel
+/usr/bin/php /vagrant/src/artisan db:seed --class="SentinelDatabaseSeeder"
