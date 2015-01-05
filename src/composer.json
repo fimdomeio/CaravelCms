@@ -5,7 +5,16 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"rydurham/sentinel": "~1.4"
+	},
+	"require-dev": {
+		"behat/behat": "2.5.*@stable",
+		"behat/mink": "1.5.*@stable",
+		"behat/mink-extension": "*",
+		"behat/mink-goutte-driver": "*",
+		"behat/mink-selenium2-driver": "*",
+		"fzaninotto/faker": "v1.3.0"
 	},
 	"autoload": {
 		"classmap": [

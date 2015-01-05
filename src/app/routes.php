@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function()
+// Set Home Route
+ Route::get('/', array('as' => 'home', function()
 {
-	return View::make('hello');
-});
+    return View::make('hello');
+}));
+
+
+
+
+Route::get('/users/isAuthorized', 'UsersController@isAuthorized');
