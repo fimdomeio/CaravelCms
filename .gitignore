@@ -20,3 +20,7 @@ database.sqlite
 src/public/css/style.css
 dbdumps
 src/bower_components
+src/public/css/loading-bar.css
+src/public/js/loading-bar.js
+src/public/js/lodash.js
+src/public/js/angular.js
