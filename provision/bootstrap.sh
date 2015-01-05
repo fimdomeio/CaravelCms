@@ -89,7 +89,14 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
 
  updatedb
 
-if [ -f "/vagrant/bin/runOnce" ]; then /vagrant/bin/runOnce; mv "/vagrant/bin/runOnce" "/vagrant/bin/runOnce.done" ; fi
+
+
+cd /vagrant
+npm install
+
+cd /vagrant/src/
+/usr/local/bin/composer update;
+
 
 echo "if they where available on your machine you'll have:"
 echo " - a webserver on local port 8000"
