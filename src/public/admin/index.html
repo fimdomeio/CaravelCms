@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="caravel">
+<head>
+	<meta charset="UTF-8">
+	<title>Caravel Admin</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/loading-bar.css">
+	<script src="/js/angular.js"></script>
+	<script src="/js/ui-bootstrap.js"></script>
+	<script src="/js/lodash.js"></script>
+	<script src="/js/restangular.js"></script>
+	<script src="/js/loading-bar.js"></script>
+	<script src="/js/script.js"></script>
+</head>
+<body>
+<div ng-controller="AuthorizationCtrl" ng-show="authorized" ng-init="isauthorized();">
+	<main-navigation></main-navigation>
+		<div class="container-fluid">
+
+		<div class="col-md-4">
+			<caravel-issues></caravel-issues>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Project Issues</div>
+  				<div class="panel-body">
+    				Specific project issues go here
+  				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
