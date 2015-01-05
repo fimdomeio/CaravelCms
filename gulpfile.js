@@ -5,9 +5,9 @@ var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var shell = require('gulp-shell')
 
-var lessFiles = ['src/public/css/style.less', 'src/public/css/variables.css'];
-var htmlFiles = 'src/public/**/**.html';
-var jsFiles = 'src/public/**/**.js';
+var lessFiles = ['/vagrant/src/public/css/style.less', '/vagrant/src/public/css/variables.less'];
+var htmlFiles = '/vagrant/src/public/**/**.html';
+var jsFiles = '/vagrant/src/public/**/**.js';
 
 gulp.task('default', ['bowercopy', 'browser-sync','less', 'html', 'js'], function() {
 
@@ -19,9 +19,9 @@ gulp.task('default', ['bowercopy', 'browser-sync','less', 'html', 'js'], functio
 });
 
 gulp.task('less', function() {
-  gulp.src(lessFiles)
+  gulp.src('/vagrant/src/public/css/style.less')
     .pipe(less())
-    .pipe(gulp.dest('src/public/css'))
+    .pipe(gulp.dest('/vagrant/src/public/css/'))
     .pipe(reload({stream:true})); //Browser Sync
 });
 
@@ -32,18 +32,21 @@ gulp.task('html', function(){
 
 gulp.task('bowercopy', ['bowerUpdate'],function(){
   gulp.src([
-    'src/bower_components/angular/angular.js',
-    'src/bower_components/angular-bootstrap/ui-bootstrap.js',
-    'src/bower_components/angular-loading-bar/build/loading-bar.js',
-    'src/bower_components/lodash/dist/lodash.js',
-    'src/bower_components/restangular/dist/restangular']
+    '/vagrant/src/bower_components/angular/angular.js',
+    '/vagrant/src/bower_components/angular-bootstrap/ui-bootstrap.js',
+    '/vagrant/src/bower_components/angular-loading-bar/build/loading-bar.js',
+    '/vagrant/src/bower_components/lodash/dist/lodash.js',
+    '/vagrant/src/bower_components/restangular/dist/restangular.js']
     )
-  .pipe(gulp.dest('src/public/js/'))
+  .pipe(gulp.dest('/vagrant/src/public/js/'))
+
+  gulp.src('/vagrant/src/bower_components/angular-loading-bar/src/loading-bar.css')
+  .pipe(gulp.dest('/vagrant/src/public/css/'))
+
 });
 
 gulp.task('bowerUpdate', shell.task([
-  'cd /vagrant/src',
-  '/usr/local/bin/bower update'
+  'cd /vagrant/src; /usr/local/bin/bower install'
 ]));
 
 gulp.task('js', function(){
