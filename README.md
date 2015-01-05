@@ -33,4 +33,6 @@ Next time you need to run it its just `vagrant up` and `vagrant ssh -c build`
 
 Why
 ---------------------
+Tired of passing a project to someone and having him/her take a week to get the development environment running. So here it is.
+
 I'm making this a super coder friendly cms. The coder admin area is going to be full of goodies like a code generator, on site documentation, Caravel and project specific issues tracking.
