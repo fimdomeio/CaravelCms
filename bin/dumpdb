@@ -1,0 +1,8 @@
+#!/bin/bash
+date=$(date +'%Y-%m-%d %H:%M:%S')
+read Y M D h m s <<< ${date//[-: ]/ }
+
+if [ ! -f "/vagrant/dbdumps/" ]; then mkdir /vagrant/dbdumps/; fi;
+mkdir /vagrant/dbdumps/
+/usr/bin/mysqldump -uroot -plocalpassword localdatabase > "/vagrant/dbdumps/$Y$M$D ${h}h$m db_dump.sql"
+
