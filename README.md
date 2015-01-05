@@ -1,7 +1,7 @@
 Caravel CMS 0.2
 =====================
 
-First commits on 0.2.
+First commits on 0.2a.
 
 WAT?
 ---------------------
