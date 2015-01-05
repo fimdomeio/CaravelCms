@@ -76,8 +76,8 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
 
 
 
- if ! grep -q 'cd /vagrant/src' "/home/vagrant/.profile"; then
-   echo 'cd /vagrant/src' >> /home/vagrant/.profile
+ if ! grep -q 'cd /vagrant' "/home/vagrant/.profile"; then
+   echo 'cd /vagrant' >> /home/vagrant/.profile
  fi
 
 
