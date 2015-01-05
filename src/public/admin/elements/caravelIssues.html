@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Caravel Issues</div>
+  	<div class="panel-body">
+  		{{loading}}
+  		<ul class="list-group">
+  			<li class="list-group-item" ng-repeat="issue in issues">
+					<b>{{issue.number}}.</b> {{issue.title}} <a href="https://github.com/fimdomeio/CaravelCms/issues/{{issue.number}}" target="_blank" class="glyphicon glyphicon-link"></a> <span ng-repeat="label in issue.labels"> <span style="background-color: #{{label.color}}"class="label label-default">{{label.name}}</span></span>
+  			</li>
+  		<ul class="list-group">
+  	</div>
+	</div>
+</div>
