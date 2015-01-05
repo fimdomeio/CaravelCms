@@ -53,6 +53,8 @@ if [ ! -f "/usr/bin/node" ]; then ln /usr/bin/nodejs /usr/bin/node ; fi;
 
 if [ ! -f "/usr/local/bin/bower" ]; then npm install -g bower; fi;
 if [ ! -f "/usr/local/bin/gulp" ]; then npm install -g gulp; fi;
+#Windows does not like npm long path names, so lets hide them
+ln -s /home/vagrant/node_modules /vagrant/node_modules
 
 echo "Configuring Nginx"
 rm /etc/nginx/sites-available/nginx_vhost 2> /dev/null
