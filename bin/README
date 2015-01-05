@@ -1,0 +1,11 @@
+
+The files on this directory should be ran inside the VM.
+
+This directory was added to $PATH, so the full path is not needed.
+
+One simple way to run a command would be
+
+You can also easily run them from outside the vm like this:
+	$ vagrant ssh -c "dumpdb"
+
+
