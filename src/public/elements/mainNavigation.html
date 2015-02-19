@@ -14,26 +14,26 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li-->
         <li class="dropdown" dropdown>
           <a href="#" class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">Developers <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Project Issues</a></li>
-            <li><a href="#">Caralvel Issues</a></li>
-            <li><a href="#">Generator</a></li>
-            <li><a href="#">Kitchen Sink</a></li>
+            <li><a href="/admin/projectissues">Project Issues</a></li>
+            <li><a href="/admin/caravelissues">Caravel Issues</a></li>
+            <li><a href="/admin/generator">Generator</a></li>
+            <li><a href="/admin/kitchensynk">Kitchen Sink</a></li>
             <li class="divider"></li>
-            <li><a href="#">Documentation</a></li>
+            <li><a href="admin/documentation">Documentation</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="/">go to site</a></li>
         <li class="dropdown"  dropdown>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" dropdown-toggle aria-expanded="false"><i class="glyphicon glyphicon-user text-primary"></i> {{ user.name }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+            <li><a href="/users/settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
             <li class="divider"></li>
             <li><a href="/auth/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
           </ul>
