@@ -2,10 +2,12 @@
   "name": "Caravel CMS",
   "version": "0.2",
   "dependencies": {
-    "bootstrap": "~3.0.0",
-    "angular-bootstrap": "~0.*",
+    "bootstrap": "~3.*",
+    "angular": "~1.3.*",
+    "angular-bootstrap": "*",
     "angular-loading-bar": "*",
-    "restangular": "*"
+    "restangular": "*",
+    "angular-route": "*"
   },
   "private": true
 }
