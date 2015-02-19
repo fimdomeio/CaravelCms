@@ -1,6 +1,6 @@
  "use strict";
 (function(){
-	var app = angular.module('caravel', ['ui.bootstrap', 'angular-loading-bar', 'restangular']);
+	var app = angular.module('caravel', ['ui.bootstrap', 'angular-loading-bar', 'restangular', 'ngRoute']);
 
   app.controller('AuthorizationCtrl', function($scope, Restangular){
 
@@ -8,7 +8,7 @@
 
     $scope.isauthorized = function(){
       console.log('called');
-      Restangular.oneUrl('isAuthorized', '/users/isAuthorized').get().then(function(isauth) {
+      Restangular.oneUrl('isAuthorized', '/isAuthorized').get().then(function(isauth) {
           console.log(isauth);
           if(!isauth.authorized){
             window.location.replace("/login");
