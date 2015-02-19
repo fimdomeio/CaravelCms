@@ -13,12 +13,15 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('admin', ['middleware' => 'auth', 'uses' => 'DashboardController@index']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('isAuthorized', 'CaravelController@isAuthorized');
-Route::get('/admin/api/caravel/issues', 'CaravelController@issues');
+
+Route::get('api/issues/github',  ['middleware' => 'auth', 'uses' => 'Api\IssuesController@gitHub']);
+
+// API
+Route::get('api/users/whoami', 'Api\UserController@whoami');
