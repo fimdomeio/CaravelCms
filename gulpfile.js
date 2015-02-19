@@ -33,6 +33,7 @@ gulp.task('html', function(){
 gulp.task('bowercopy', ['bowerUpdate'],function(){
   gulp.src([
     '/vagrant/src/bower_components/angular/angular.js',
+    '/vagrant/src/bower_components/angular-route/angular-route.js',
     '/vagrant/src/bower_components/angular-bootstrap/ui-bootstrap.js',
     '/vagrant/src/bower_components/angular-loading-bar/build/loading-bar.js',
     '/vagrant/src/bower_components/lodash/dist/lodash.js',
