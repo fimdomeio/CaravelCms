@@ -13,7 +13,7 @@ if [ "$hostName" = "$machineName" ]; then
 	echo "running from inside the VM"
 
 	cd /vagrant/src
-	/vagrant/src/vendor/bin/behat
+	/vagrant/src/vendor/bin/behat "$@"
 else
 	vagrant ssh -c '/vagrant/bin/behat'
 fi
