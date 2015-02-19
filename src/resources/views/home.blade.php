@@ -1,15 +1,19 @@
 @extends('app')
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
+<div>
+		<div class="container-fluid">
 
-				<div class="panel-body">
-					You are logged in!
-				</div>
+		<div class="col-md-4">
+			<caravel-issues></caravel-issues>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Project Issues</div>
+  				<div class="panel-body">
+    				Specific project issues go here
+  				</div>
 			</div>
 		</div>
 	</div>
