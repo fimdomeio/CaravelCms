@@ -12,7 +12,4 @@ class CaravelController extends Controller {
 		return $issues;
 	}
 
-	public function isAuthorized(){
-		return ['authorized' => \Auth::check()];
-	}
 }
