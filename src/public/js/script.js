@@ -23,7 +23,7 @@
       		$scope.issues =	[];
       		$scope.loading = 'Loading...'
       		// /admin/api/caravel/issues
-      		var issuesQ = Restangular.all('admin/api/caravel/issues');
+      		var issuesQ = Restangular.all('api/issues/github');
 
 					// This will query /accounts and return a promise.
 					issuesQ.getList().then(function(issuesList) {
