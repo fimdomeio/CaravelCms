@@ -18,6 +18,7 @@
     }
 
   });
+	var app = angular.module('caravel', ['ui.bootstrap', 'angular-loading-bar', 'restangular']);
   
 
 	app.directive("mainNavigation", function() {

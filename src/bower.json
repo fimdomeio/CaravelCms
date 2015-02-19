@@ -6,8 +6,7 @@
     "angular": "~1.3.*",
     "angular-bootstrap": "*",
     "angular-loading-bar": "*",
-    "restangular": "*",
-    "angular-route": "*"
+    "restangular": "*"
   },
   "private": true
 }
