@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use \App\Setting;
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +31,19 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$allowRegistration = Setting::where('key', 'allowRegistration')->get();
+		$err = null;
+		$res = null;
+		if(count($allowRegistration) != 1){
+			$err = 'settingNotFound';
+		}else{
+			if($allowRegistration[0]->value == 1){
+				$res = true;
+			}else {
+				$res = false;
+			}
+		}
+		return view('welcome')->with('allowRegistration', $res )->with('err', $err);
 	}
 
 }
