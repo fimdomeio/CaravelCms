@@ -5,7 +5,7 @@ var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var shell = require('gulp-shell')
 
-var lessFiles = ['/vagrant/src/public/css/style.less', '/vagrant/src/public/css/variables.less'];
+var lessFiles = ['/vagrant/src/resources/assets/less/**.less'];
 var htmlFiles = '/vagrant/src/public/**/**.html';
 var jsFiles = '/vagrant/src/public/**/**.js';
 
@@ -19,7 +19,7 @@ gulp.task('default', ['bowercopy', 'browser-sync','less', 'html', 'js'], functio
 });
 
 gulp.task('less', function() {
-  gulp.src('/vagrant/src/public/css/style.less')
+  gulp.src('/vagrant/src/resources/assets/less/admin.less')
     .pipe(less())
     .pipe(gulp.dest('/vagrant/src/public/css/'))
     .pipe(reload({stream:true})); //Browser Sync
