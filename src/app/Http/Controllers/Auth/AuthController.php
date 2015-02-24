@@ -5,6 +5,10 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Illuminate\Http\Request;
+
+use \App\User;
+
 class AuthController extends Controller {
 
 	/*
@@ -35,5 +39,83 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	public function getLogin()
+	{
+		return view('auth.login')->with('hideMenu', true);
+	}
+
+	public function postLogin(Request $request)
+	{
+		$this->validate($request, [
+			'email' => 'required', 'password' => 'required',
+		]);
+
+		$credentials = $request->only('email', 'password');
+
+		$credentials['confirmed'] = 1;
+		if ($this->auth->attempt($credentials, $request->has('remember')))
+		{
+			return redirect()->intended($this->redirectPath());
+		}
+
+		return redirect($this->loginPath())
+					->withInput($request->only('email', 'remember'))
+					->withErrors([
+						'email' => 'These credentials do not match our records or account not active.',
+					]);
+	}
+
+	public function getRegister()
+	{
+		return view('auth.register')->with('hideMenu', true);
+	}
+
+	public function postRegister(Request $request)
+	{
+		$validator = $this->registrar->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+		$user = $this->registrar->create($request->all());
+		$user->confirmationString = substr(sha1(rand()), 0, 32);
+		$user->confirmed = false;
+		if(User::count() == 1){
+			$user->roles()->attach(1);
+		}else{
+			$user->roles()->attach(2);
+		}
+
+		$user->push();
+		return View('auth.successful-registration')->with('hideMenu', true);
+
+	}
+
+	public function redirectPath()
+	{
+		if (property_exists($this, 'redirectPath'))
+		{
+			return $this->redirectPath;
+		}
+
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
+	}
+
+	public function getConfirm($confirmationString){
+		$user = User::where('confirmationString', $confirmationString)->first();
+		$success = null;
+		if(!is_null($user)){
+			$user->confirmed = true;
+			$user->save();
+			$success = true;
+		}else {
+			$success = false;
+		}
+		
+		return View('auth.successful-confirmation')->with('hideMenu', true)->with('success', $success);
+	}
 
 }
