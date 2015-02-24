@@ -6,14 +6,14 @@ var reload      = browserSync.reload;
 var shell = require('gulp-shell')
 
 var lessFiles = ['/vagrant/src/resources/assets/less/admin.less', '/vagrant/src/resources/assets/less/variables.less'];
-var htmlFiles = '/vagrant/src/public/**/**.html';
+var htmlFiles = ['/vagrant/src/public/**/**', '/vagrant/src/resources/**/**.php'];
 var jsFiles = '/vagrant/src/public/**/**.js';
 
-gulp.task('default', ['bowercopy', 'browser-sync','less', 'html', 'js'], function() {
+gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 
 
   gulp.watch(lessFiles, ['less']);
-  gulp.watch(htmlFiles, ['html']);
+  gulp.watch(htmlFiles).on('change', reload);
   gulp.watch(jsFiles, ['js']);
 
 });
@@ -23,11 +23,6 @@ gulp.task('less', function() {
     .pipe(less())
     .pipe(gulp.dest('/vagrant/src/public/css/'))
     .pipe(reload({stream:true})); //Browser Sync
-});
-
-gulp.task('html', function(){
-  gulp.src(htmlFiles)
-  .pipe(reload({stream:true})); //Browser Sync
 });
 
 gulp.task('bowercopy', ['bowerUpdate'],function(){
