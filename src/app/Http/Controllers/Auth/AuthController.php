@@ -84,9 +84,11 @@ class AuthController extends Controller {
 		$user->confirmationString = substr(sha1(rand()), 0, 32);
 		$user->confirmed = false;
 		if(User::count() == 1){
-			$user->roles()->attach(1);
+			$adminId = \App\Role::where('name', 'admin')->first()->id;
+			$user->roles()->attach($adminId);
 		}else{
-			$user->roles()->attach(2);
+			$editorId = \App\Role::where('name', 'editor')->first()->id;
+			$user->roles()->attach($editorId);
 		}
 
 		$user->push();
