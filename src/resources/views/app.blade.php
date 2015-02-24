@@ -21,8 +21,9 @@
 	<![endif]-->
 </head>
 <body>
-		<main-navigation></main-navigation>
-
+		@if(!isset($hideMenu))
+			<main-navigation></main-navigation>
+		@endif
 
 	@yield('content')
 
