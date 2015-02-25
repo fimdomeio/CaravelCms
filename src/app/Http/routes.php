@@ -21,7 +21,8 @@ Route::controllers([
 ]);
 
 
-Route::get('api/issues/github',  ['middleware' => 'auth', 'uses' => 'Api\IssuesController@gitHub']);
 
 // API
+Route::get('api/issues/github',  ['middleware' => 'auth', 'uses' => 'Api\IssuesController@gitHub']);
 Route::get('api/users/whoami', 'Api\UserController@whoami');
+Route::get('api/caravelmessages', ['middleware' => 'auth', 'uses' => 'Api\CaravelMessagesController@index']);
