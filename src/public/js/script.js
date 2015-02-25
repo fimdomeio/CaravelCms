@@ -35,4 +35,21 @@
     };
   });
 
+  app.directive("caravelMessages", function() {
+    return {
+      restrict:"E",
+      templateUrl: "/elements/caravelMessages.html",
+      controller: function($scope, Restangular){
+        Restangular.oneUrl('messages', '/api/caravelmessages/').get().then(function(messages){
+          $scope.messages = messages.msg;
+        });
+        var closeAlert = function(index){
+          $scope.messages.splice(index, 1);
+        }
+
+      }
+    };
+  });
+
+
 })();
