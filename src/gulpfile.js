@@ -12,9 +12,9 @@ var jsFiles = '/vagrant/src/public/**/**.js';
 gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 
 
-  gulp.watch(lessFiles, ['less']);
-  gulp.watch(htmlFiles).on('change', reload);
-  gulp.watch(jsFiles, ['js']);
+  gulp.watch(lessFiles, { interval: 1000 }, ['less']);
+  gulp.watch(htmlFiles, { interval: 1000 }).on('change', reload);
+  gulp.watch(jsFiles, { interval: 1000 }, ['js']);
 
 });
 
