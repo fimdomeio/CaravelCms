@@ -22,12 +22,17 @@ class UsersTableSeeder extends Seeder {
     DB::table('users')->delete();
     DB::table('role_user')->delete();
 
+    $adminId = \App\Role::where('name', 'admin')->first()->id;
+    $editorId = \App\Role::where('name', 'editor')->first()->id;
     $user = $this->registrar->create([
     	'name' => 'Devel User',
     	'email' => 'devel@example.com',
-    	'password' => 'develuser'
+    	'password' => 'develuser',
     ]);
-    $user->roles()->attach(1);
+
+    $user->roles()->attach($adminId);
+    $user->confirmed = 1;
+    $user->save();
 
     $faker = Faker\Factory::create();
 
@@ -35,9 +40,13 @@ class UsersTableSeeder extends Seeder {
     	$user = $this->registrar->create([
     		'name' => $faker->name,
      		'email' => $faker->email,
-     		'password' => $faker->word
+     		'password' => $faker->word,
      	]);
-
+      $user->roles()->attach($editorId);
+      $user->confirmationString = substr(sha1(rand()), 0, 32);
+      $user->confirmed = $faker->randomElement([0, 1]);
+      $user->save();
     }
+    $this->command->info("User table seeded!\nYou can login with user: devel@example.com pass: develuser");
   }
 }
