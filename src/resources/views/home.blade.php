@@ -3,7 +3,9 @@
 @section('content')
 <div>
 		<div class="container-fluid">
-
+		<div class="col-md-12">
+			<caravel-messages></caravel-messages>
+		</div>
 		<div class="col-md-4">
 			<caravel-issues></caravel-issues>
 		</div>

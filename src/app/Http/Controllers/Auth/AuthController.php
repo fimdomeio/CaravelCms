@@ -92,7 +92,11 @@ class AuthController extends Controller {
 		}
 
 		$user->push();
-		return View('auth.successful-registration')->with('hideMenu', true);
+		$willSendMail = true;
+		if($_ENV['APP_ENV'] == 'local' && $_ENV['MAIL_PRETEND'] == 'true'){
+			$willSendMail = false;
+		}
+		return View('auth.successful-registration')->with('hideMenu', true)->with('willSendMail', $willSendMail);
 
 	}
 
