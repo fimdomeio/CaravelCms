@@ -90,7 +90,8 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
 
  updatedb
 
-
+cp /vagrant/provision/config/99-caravel /etc/update-motd.d/
+chmod +x /etc/update-motd.d/99-caravel
 
 cd /vagrant
 npm install
