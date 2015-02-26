@@ -5,7 +5,7 @@ var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var shell = require('gulp-shell')
 
-var lessFiles = ['/vagrant/src/resources/assets/less/admin.less', '/vagrant/src/resources/assets/less/variables.less'];
+var lessFiles = ['/vagrant/src/resources/assets/less/**'];
 var htmlFiles = ['/vagrant/src/public/**/**', '/vagrant/src/resources/**/**.php'];
 var jsFiles = '/vagrant/src/public/**/**.js';
 
