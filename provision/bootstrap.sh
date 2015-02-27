@@ -3,6 +3,17 @@ start=`date +%s`
 
 touch /home/vagrant/last-apt-update
 
+#if [ ! -f "/home/vagrant/.composer/config.json" ]; 
+#	then 
+#			 TOKEN=`cat /vagrant/github`
+#       mkdir /home/vagrant/.composer/
+#       touch /home/vagrant/.composer/config.json
+#			 echo '{ "config": {"github-oauth":{"github.com": ' > /home/vagrant/.composer/config.json
+#			 echo "\"$TOKEN\"" >> home/vagrant/.composer/config.json
+#			 echo '}}}' >> home/vagrant/.composer/config.json
+#			 rm /vagrant/github
+#fi;
+
 lastUpdate=$(</home/vagrant/last-apt-update)
 
 if [ $((start-lastUpdate)) -gt 86400 ]; then apt-get update; apt-get -y upgrade; fi;
@@ -83,6 +94,8 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
    echo 'cd /vagrant' >> /home/vagrant/.profile
  fi
 
+if [ ! -f "/vagrant/src/.env" ]; then cp /vagrant/src/.env.example /vagrant/src/.env ; fi;
+
 
  if ! grep -q 'PATH="~/.composer/vendor/bin:/vagrant/bin:$PATH"' "/home/vagrant/.profile"; then
    echo 'PATH="~/.composer/vendor/bin:/vagrant/bin:$PATH"' >> /home/vagrant/.profile
@@ -95,9 +108,6 @@ chmod +x /etc/update-motd.d/99-caravel
 
 cd /vagrant
 npm install
-
-cd /vagrant/src/
-/usr/local/bin/composer update;
 
 
 echo "if they where available on your machine you'll have:"
