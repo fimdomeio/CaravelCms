@@ -13,4 +13,5 @@ if [ ! -f "/home/vagrant/.composer/config.json" ];
 			 echo '}}}' >> /home/vagrant/.composer/config.json
 			 cd /vagrant/src
 			 composer update
+			 ./vagrant/seed
 fi;

@@ -20,7 +20,7 @@ Install
 
 1. `git clone https://github.com/fimdomeio/CaravelCms.git`
 2. `vagrant up`
-4. `vagrant ssh -c "composer init"`
+4. `vagrant ssh -c "caravelInit"`
 5. 'vagrant ssh'
 
 Once you're there you'll have onscreen info on what to do next 
