@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ ! -f "/home/vagrant/.composer/config.json" ]; 
+	then 
+			 echo "Due to a problem with github rate limit I have to ask you for a github acces token"
+			 echo "It seems stupid but thats the way it is with composer and github"
+			 echo "Generate token at https://github.com/settings/tokens/new"
+			 echo -n "Your github access token: "
+    	 read TOKEN
+       mkdir /home/vagrant/.composer/
+       touch /home/vagrant/.composer/config.json
+			 echo '{ "config": {"github-oauth":{"github.com": ' > /home/vagrant/.composer/config.json
+			 echo "\"$TOKEN\"" >> /home/vagrant/.composer/config.json
+			 echo '}}}' >> /home/vagrant/.composer/config.json
+			 cd /vagrant/src
+			 composer update
+fi;

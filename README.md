@@ -20,13 +20,14 @@ Install
 
 1. `git clone https://github.com/fimdomeio/CaravelCms.git`
 2. `vagrant up`
-3. `vagrant ssh -c seed`
-4. `vagrant ssh -c build`
+4. `vagrant ssh -c "composer init"`
+5. 'vagrant ssh'
 
+Once you're there you'll have onscreen info on what to do next 
 
 Running
 ---------------------
-It's already running. Normal server is running on port 80. funky BrowserSync (live reload on streroids) is running on port 3000.
+It's already running. Normal server is running on port 80.
 
 Next time you need to run it its just `vagrant up` and `vagrant ssh -c build`
 
