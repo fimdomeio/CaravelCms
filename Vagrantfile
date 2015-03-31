@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty32"
+  config.vm.box = "fimdomeio/caravel"
   config.vm.provision :shell, path: "provision/bootstrap.sh"
 
   # Disable automatic box update checking. If you disable this, then
@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
   file = File.open("hostname", "rb")
   hostname = file.read
-  config.vm.hostname = hostname
+  config.vm.hostname = hostname + ".dev"
   file.close()
 
   # Create a public network, which generally matched to bridged network.
@@ -73,7 +73,7 @@ Vagrant.configure(2) do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
   config.vm.provider "virtualbox" do |v|
-    v.name = "Caravel DevelBox"
+    v.name = "Caravel DevelBox 0.2"
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
