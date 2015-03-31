@@ -16,7 +16,7 @@ touch /home/vagrant/last-apt-update
 
 lastUpdate=$(</home/vagrant/last-apt-update)
 
-if [ $((start-lastUpdate)) -gt 86400 ]; then apt-get update; apt-get -y upgrade; fi;
+if [ $((start-lastUpdate)) -gt 86400 ]; then apt-get update; apt-get -y dist-upgrade; fi;
 
  
 echo "Provisioning virtual machine..."
@@ -108,6 +108,9 @@ chmod +x /etc/update-motd.d/99-caravel
 
 cd /vagrant
 npm install
+cd /vagrant/src
+composer update
+
 
 
 echo "if they where available on your machine you'll have:"
