@@ -3,52 +3,16 @@
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
 		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
 
-			}
-
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				margin-top: -2em;
-				font-size: 96px;
-				margin-bottom: 40px;
-				font-weight: 100;
-				color: #666;
-			}
-
-			.greeting {
-				font-weight: 100;
-				margin-bottom: 48px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
 		</style>
 			<link href="/css/admin.css" rel="stylesheet">
 
 	</head>
 	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Caravel 0.2</div>
+		<div class="container-fluid">
+			<div class="row">
+			<div class="content col-md-12 text-center">
+				<h1 class="title lmb" style="color: white; font-size: 64px;">Caravel 0.2</h1>
 				@if(Auth::check())
 					<h3 class="greeting">Hey {{  Auth::user()->name }}! </h3>
 					<a href="/auth/login" class="btn btn-primary">admin</a>
@@ -63,6 +27,7 @@
 						@endif
 					@endif
 				@endif
+			</div>
 			</div>
 		</div>
 	</body>
