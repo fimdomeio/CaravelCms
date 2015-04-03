@@ -3,7 +3,6 @@ Feature: Authorizations
 	as a site registered user
 	I need to be able to register and login to my account
 
-
 Scenario: Register first user
 	Given Registrations are allowed
 	When I register an account
@@ -22,6 +21,14 @@ Scenario: Register second user
 	Then my account should be confirmed
 	Then my user should be an "editor"
 
+Scenario: Register without confirmation Password
+	Given Registrations are allowed
+	When I go to "/auth/register"
+	When I fill in "email" with "someemail@example.com"
+	When I fill in "password" with "someuniquepassword"
+	When I fill in "password_confirmation" with "someotherpassword"
+	When I press "Register"
+	Then I should see "The password confirmation does not match" 
 
 Scenario: Login
 	Given I'm a registered user

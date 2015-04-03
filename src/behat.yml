@@ -2,7 +2,8 @@ default:
   extensions:
     Laracasts\Behat\ServiceContainer\BehatExtension: ~
     Behat\MinkExtension\ServiceContainer\MinkExtension:
-      default_session: laravel
+      base_url: http://0.0.0.0
+      default_session: selenium2
       laravel: ~
       selenium2:
-        wd_host: "http://localhost:8643/wd/hub"
+        wd_host: "http://localhost:4444/wd/hub"
