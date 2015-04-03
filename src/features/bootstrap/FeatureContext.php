@@ -18,8 +18,9 @@ use Illuminate\Contracts\Auth\Registrar;
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
 {
     use Migrator;
-    use DatabaseTransactions;
+    //use DatabaseTransactions;
 
+    private $baseUrl = '';
     private $name = 'Test User';
     private $email = 'user@example.com';
     private $password = 'testpassword';
@@ -36,6 +37,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     {
       DB::table('users')->delete();
       DB::table('role_user')->delete();
+      $this->baseUrl = $this->getMinkParameter('base_url');
     }
 
     /**
@@ -78,13 +80,12 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iRegisterAnAccount()
     {
-      $this->visit('auth/register');
+      $this->visit($this->baseUrl.'/auth/register');
 
       $this->fillField('name', $this->name);
       $this->fillField('email', $this->email);
       $this->fillField('password', $this->password);
       $this->fillField('password_confirmation', $this->password);
-
       $this->pressButton('Register');
     }
 
@@ -99,8 +100,10 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iVisitTheConfirmationPage()
     {
+      $users = App\User::get();
       $user = \App\User::where('email', $this->email)->first();
-      $this->visit('/auth/confirm/'.$user->confirmationString);
+
+      $this->visit($this->baseUrl.'/auth/confirm/'.$user->confirmationString);
     }
 
     /**
@@ -132,4 +135,29 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     {
       Artisan::call('db:seed', ['--class' => 'UsersTableSeeder']);
     }
+
+    /**
+     * @AfterStep
+     */
+    public function takeScreenshotAfterFailedStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
+    {
+        if (99 === $scope->getTestResult()->getResultCode()) {
+            $this->takeScreenshot();
+        }
+    }
+
+    private function takeScreenshot()
+    {
+        $driver = $this->getSession()->getDriver();
+        /*if (!$driver instanceof Selenium2Driver) {
+            return;
+        }*/
+        $baseUrl = $this->getMinkParameter('base_url');
+        $fileName = date('d-m-y') . '-' . uniqid() . '.png';
+        $filePath = '/vagrant/test-screenshots';
+
+        $this->saveScreenshot($fileName, $filePath);
+        print 'Saving screenshot at: test-screenshots/'. $fileName;
+    }
+  
 }
