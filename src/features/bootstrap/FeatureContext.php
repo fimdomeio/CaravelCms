@@ -154,10 +154,10 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         }*/
         $baseUrl = $this->getMinkParameter('base_url');
         $fileName = date('d-m-y') . '-' . uniqid() . '.png';
-        $filePath = '/vagrant/test-screenshots';
+        $filePath = '/vagrant/test-results';
 
         $this->saveScreenshot($fileName, $filePath);
-        print 'Saving screenshot at: test-screenshots/'. $fileName;
+        print 'Saving screenshot at: test-results/'. $fileName;
     }
   
 }
