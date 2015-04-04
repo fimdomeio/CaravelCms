@@ -58,6 +58,7 @@ sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
 mysql -u root -plocalpassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'localpassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 sudo /etc/init.d/mysql restart
 mysql -uroot -plocalpassword -e 'create database localdatabase;' 2> /dev/null
+mysql -uroot -plocalpassword -e 'create database testing;' 2> /dev/null
 
 echo "Installing nodejs npm bower phantomjs and gulp"
 apt-get install nodejs npm phantomjs -y
