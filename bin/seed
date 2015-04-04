@@ -12,8 +12,8 @@ hostName="`( hostname -f )`"
 if [ "$hostName" = "$machineName" ]; then
 	echo "running from inside the VM"
 
-	/usr/bin/php /vagrant/src/artisan migrate
-	/usr/bin/php /vagrant/src/artisan db:seed
+	/usr/bin/php /vagrant/src/artisan migrate "$@"
+	/usr/bin/php /vagrant/src/artisan db:seed "$@"
 else
 	vagrant ssh -c '/vagrant/bin/seed'
 fi
