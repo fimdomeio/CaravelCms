@@ -41,6 +41,14 @@ $app->singleton(
 	'Caravel\Exceptions\Handler'
 );
 
+$domain = '';
+if(!empty($_SERVER['HTTP_HOST'])){
+    $domain = $_SERVER['HTTP_HOST'];
+}
+if($domain == 'behat.caravel.dev'){
+    $app->loadEnvironmentFrom('.env.behat');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

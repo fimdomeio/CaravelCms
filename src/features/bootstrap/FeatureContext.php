@@ -82,7 +82,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function registrationsAreAllowed()
     {
-      $setting = new App\Setting;
+      $setting = new Caravel\Setting;
       $setting->key = 'allowRegistration';
       $setting->value = 1;
       $setting->save();
@@ -103,7 +103,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     public function iActivateMyAccount(){
-      $user = \App\User::where('email', $this->email)->first();
+      $user = Caravel\User::where('email', $this->email)->first();
       $user->confirmed = true;
       $user->save();
     }
@@ -113,8 +113,8 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iVisitTheConfirmationPage()
     {
-      $users = App\User::get();
-      $user = \App\User::where('email', $this->email)->first();
+      $users = Caravel\User::get();
+      $user = Caravel\User::where('email', $this->email)->first();
 
       $this->visit($this->baseUrl.'/auth/confirm/'.$user->confirmationString);
     }
@@ -124,7 +124,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function myAccountShouldBeConfirmed()
     {
-      $user = \App\User::where('email', $this->email)->first();
+      $user = Caravel\User::where('email', $this->email)->first();
       if(!$user->confirmed){
         throw new Exception('Account not Confirmed');
       }
@@ -135,7 +135,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function myUserShouldBeAn($role)
     {
-      $user = \App\User::where('email', $this->email)->with('roles')->first();
+      $user = \Caravel\User::where('email', $this->email)->with('roles')->first();
       if($user->roles[0]->name != $role){
         throw new Exception('Account not a '.$role);
       }
@@ -155,18 +155,18 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function takeScreenshotAfterFailedStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
     {
         if (99 === $scope->getTestResult()->getResultCode()) {
-            $this->takeScreenshot();
+            $this->takeScreenshot($scope->getStep()->getText());
         }
     }
 
-    private function takeScreenshot()
+    private function takeScreenshot($sufix = '')
     {
         $driver = $this->getSession()->getDriver();
         /*if (!$driver instanceof Selenium2Driver) {
             return;
         }*/
         $baseUrl = $this->getMinkParameter('base_url');
-        $fileName = date('d-m-y') . '-' . uniqid() . '.png';
+        $fileName = date('d-m-y') . '-' . $sufix . '.png';
         $filePath = '/vagrant/test-results';
 
         $this->saveScreenshot($fileName, $filePath);

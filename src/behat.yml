@@ -2,7 +2,7 @@ default:
   extensions:
     Laracasts\Behat\ServiceContainer\BehatExtension: ~
     Behat\MinkExtension\ServiceContainer\MinkExtension:
-      base_url: http://0.0.0.0
+      base_url: http://behat.caravel.dev
       default_session: selenium2
       laravel: ~
       selenium2:
