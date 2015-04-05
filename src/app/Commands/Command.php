@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Caravel\Commands;
 
 abstract class Command {
 

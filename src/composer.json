@@ -24,6 +24,7 @@
 			"database"
 		],
 		"psr-4": {
+			"Caravel\\": "caravel/",
 			"App\\": "app/"
 		}
 	},

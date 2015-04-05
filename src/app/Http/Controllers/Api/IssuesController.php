@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace Caravel\Http\Controllers\Api;
 
-class IssuesController extends \App\Http\Controllers\Controller {
+class IssuesController extends \Caravel\Http\Controllers\Controller {
 	
 	public function gitHub(){
 		ini_set('user_agent','Caravel'); 

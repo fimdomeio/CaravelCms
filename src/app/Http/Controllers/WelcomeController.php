@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Caravel\Http\Controllers;
 
-use \App\Setting;
+use \Caravel\Setting;
 class WelcomeController extends Controller {
 
 	/*

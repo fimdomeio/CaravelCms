@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace Caravel;
 
 use Illuminate\Database\Eloquent\Model;
 

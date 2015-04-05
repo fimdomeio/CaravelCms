@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace Caravel\Http\Controllers\Api;
 
-class CaravelMessagesController extends \App\Http\Controllers\Controller {
+class CaravelMessagesController extends \Caravel\Http\Controllers\Controller {
 
 	public function index(){
 		$msg = [];

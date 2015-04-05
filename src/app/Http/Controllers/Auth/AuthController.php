@@ -1,13 +1,13 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php namespace Caravel\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Caravel\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use Illuminate\Http\Request;
 
-use \App\User;
+use \Caravel\User;
 
 class AuthController extends Controller {
 
@@ -84,10 +84,10 @@ class AuthController extends Controller {
 		$user->confirmationString = substr(sha1(rand()), 0, 32);
 		$user->confirmed = false;
 		if(User::count() == 1){
-			$adminId = \App\Role::where('name', 'admin')->first()->id;
+			$adminId = \Caravel\Role::where('name', 'admin')->first()->id;
 			$user->roles()->attach($adminId);
 		}else{
-			$editorId = \App\Role::where('name', 'editor')->first()->id;
+			$editorId = \Caravel\Role::where('name', 'editor')->first()->id;
 			$user->roles()->attach($editorId);
 		}
 

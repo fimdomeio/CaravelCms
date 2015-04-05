@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Caravel
+        psr4_prefix: Caravel
         src_path: app

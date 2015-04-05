@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace Caravel\Http\Controllers\Api;
 
-class UserController extends \App\Http\Controllers\Controller {
+class UserController extends \Caravel\Http\Controllers\Controller {
 
 	public function whoAmI(){
 		return \Auth::user();

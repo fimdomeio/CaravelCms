@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace Caravel;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -34,7 +34,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function roles()
   {
-    return $this->belongsToMany('App\Role');
+    return $this->belongsToMany('Caravel\Role');
   }
 
 	public function getIdAttribute($value) {

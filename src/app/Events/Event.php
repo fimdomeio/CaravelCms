@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace Caravel\Events;
 
 abstract class Event {
 
