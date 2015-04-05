@@ -30,11 +30,6 @@ apt-get install nginx -y
 echo "Installing PHP"
 apt-get install php5-common php5-dev php5-cli php5-fpm -y
 
-echo "installing xdebug"
-apt-get install php5-xdebug -y
-#Duplicates settings on --provision cat /var/www/provision/config/xdebug >> /etc/php5/fpm/php.ini
-rm /etc/php5/cli/conf.d/20-xdebug.ini 2>/dev/null 
-
 echo "Installing PHP extensions"
 apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql php5-imagick -y
 
@@ -116,7 +111,6 @@ composer update
 
 echo "if they where available on your machine you'll have:"
 echo " - a webserver on local port 8000"
-echo " - xdebug on local port 9000"
 echo " - mysql on localport 3306 with root password: 'localpassword'"
 echo "Anyway you can access the machine on 192.168.33.10."
 echo "If you're going to access it directly it might be a good idea to add it to /etc/hosts."
