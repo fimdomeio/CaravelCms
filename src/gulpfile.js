@@ -33,8 +33,9 @@ gulp.task('bowercopy', ['bowerUpdate'],function(){
     '/vagrant/src/bower_components/angular-bootstrap/ui-bootstrap.js',
     '/vagrant/src/bower_components/angular-loading-bar/build/loading-bar.js',
     '/vagrant/src/bower_components/lodash/dist/lodash.js',
-    '/vagrant/src/bower_components/restangular/dist/restangular.js']
-    )
+    '/vagrant/src/bower_components/restangular/dist/restangular.js',
+    '/vagrant/src/bower_components/angular-route/angular-route.js'
+    ])
   .pipe(gulp.dest('/vagrant/src/public/js/'))
 
   gulp.src('/vagrant/src/bower_components/angular-loading-bar/src/loading-bar.css')
