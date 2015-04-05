@@ -2,12 +2,29 @@
 (function(){
 	var app = angular.module('caravel', ['ui.bootstrap', 'angular-loading-bar', 'restangular']);
   
+ app.controller('AuthorizationCtrl', function($scope, Restangular){
+
+    $scope.authorized = false;
+
+    $scope.isauthorized = function(){
+      Restangular.oneUrl('me', '/api/users/me').get().then(function(res) {
+          var user = res.data.users;
+          if(!user){
+            window.location.replace("/auth/login");
+          }else{
+            $scope.authorized = true;
+          }
+        });
+    }
+
+  });
+  
 	app.directive("mainNavigation", function() {
     return {
       restrict:"E",
       templateUrl: "/elements/mainNavigation.html",
       controller: function($scope, Restangular){
-        Restangular.oneUrl('whoAmI', '/api/users/whoami').get().then(function(user){
+        Restangular.oneUrl('me', '/api/users/me').get().then(function(user){
           $scope.user = user;
         })
       }
