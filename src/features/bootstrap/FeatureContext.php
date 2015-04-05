@@ -9,7 +9,6 @@ use Behat\MinkExtension\Context\MinkContext;
 use Laracasts\Behat\Context\Migrator;
 use Laracasts\Behat\Context\DatabaseTransactions;
 
-use Illuminate\Contracts\Auth\Registrar;
 
 
 /**
@@ -35,9 +34,25 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function __construct()
     {
-      DB::table('users')->delete();
-      DB::table('role_user')->delete();
+      App::environment('behat');
       $this->baseUrl = $this->getMinkParameter('base_url');
+    }
+
+    public static function setUpDb()
+    {
+        Artisan::call('migrate:install');
+    }
+    
+    
+    /**
+     * @static
+     * @beforeFeature
+     */
+    public static function prepDb()
+    {
+        Artisan::call('migrate:refresh');
+        Artisan::call('db:seed', array('--class' => 'SettingTableSeeder'));
+        Artisan::call('db:seed', array('--class' => 'RolesTableSeeder'));
     }
 
     /**
@@ -67,12 +82,10 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function registrationsAreAllowed()
     {
-        $registrationAllowed = \App\Setting::where('key', 'allowRegistration')->first();
-        if($registrationAllowed->value != 1){
-            $registrationAllowed->value = 1;
-            $registrationAllowed->save();
-        }
-       $registrationAllowed = \App\Setting::where('key', 'allowRegistration')->first();
+      $setting = new App\Setting;
+      $setting->key = 'allowRegistration';
+      $setting->value = 1;
+      $setting->save();
     }
 
     /**
@@ -129,9 +142,9 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Given there some registered users
+     * @Given there are some registered users
      */
-    public function thereSomeRegisteredUsers()
+    public function thereAreSomeRegisteredUsers()
     {
       Artisan::call('db:seed', ['--class' => 'UsersTableSeeder']);
     }
