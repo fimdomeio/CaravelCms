@@ -10,7 +10,7 @@ $process = new Process('phantomjs --webdriver=4444');
 
 
 //remove old screenshots
-$files = glob('/vagrant/test-screenshots/*'); // get all file names
+$files = glob('/vagrant/test-results/*'); // get all file names
 foreach($files as $file){ // iterate files
   if(is_file($file))
     if($file != '.gitignore'){
