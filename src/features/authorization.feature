@@ -12,7 +12,7 @@ Scenario: Register first user
 	Then my account should be confirmed
 	Then my user should be an "admin"
 
-@registerSecond User
+@registerSecondUser
 Scenario: Register second user
 	Given registrations are allowed
 	Given there are some registered users  
