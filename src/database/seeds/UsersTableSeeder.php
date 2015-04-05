@@ -22,8 +22,8 @@ class UsersTableSeeder extends Seeder {
     DB::table('users')->delete();
     DB::table('role_user')->delete();
 
-    $adminId = \App\Role::where('name', 'admin')->first()->id;
-    $editorId = \App\Role::where('name', 'editor')->first()->id;
+    $adminId = Caravel\Role::where('name', 'admin')->first()->id;
+    $editorId = Caravel\Role::where('name', 'editor')->first()->id;
     $user = $this->registrar->create([
     	'name' => 'Devel User',
     	'email' => 'devel@example.com',

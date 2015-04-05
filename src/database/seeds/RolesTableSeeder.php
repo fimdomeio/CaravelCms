@@ -8,9 +8,9 @@ class RolesTableSeeder extends Seeder {
     {
         DB::table('roles')->delete();
 
-        \App\Role::create(['name' => 'admin']);
-        \App\Role::create(['name' => 'manager']);
-        \App\Role::create(['name' => 'editor']);
+        \Caravel\Role::create(['name' => 'admin']);
+        \Caravel\Role::create(['name' => 'manager']);
+        \Caravel\Role::create(['name' => 'editor']);
     }
 
 }

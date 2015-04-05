@@ -8,7 +8,7 @@ class SettingTableSeeder extends Seeder {
     {
         DB::table('settings')->delete();
 
-        \App\Setting::create(['key' => 'allowRegistration', 'value' => true]);
+        \Caravel\Setting::create(['key' => 'allowRegistration', 'value' => true]);
     }
 
 }
