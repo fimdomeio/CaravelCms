@@ -1,20 +1,5 @@
 #!/bin/bash
-scrDir="`dirname \"$0\"`"             # relative
-scrDir="`( cd \"$scrDir\" && pwd )`"  # absolutized and normalized
-if [ -z "$scrDir" ] ; then
-  # error; for some reason, the path is not accessible
-  # to the script (e.g. permissions re-evaled after suid)
-  exit 1  # fail
-fi
+newestSQL=`ls -t /vagrant/dbdumps | head -1`
+/usr/bin/mysql -uroot -plocalpassword localdatabase < /vagrant/dbdumps/"$newestSQL"
 
-machineName=$(cat "$scrDir/../hostname")
-hostName="`( hostname -f )`"
-if [ "$hostName" = "$machineName" ]; then
-	echo "running from inside the VM"
-
-	newestSQL=`ls -t /vagrant/dbdumps | head -1`
-	/usr/bin/mysql -uroot -plocalpassword localdatabase < /vagrant/dbdumps/"$newestSQL"
-else
-	vagrant ssh -c '/vagrant/bin/importdb'
-fi
 

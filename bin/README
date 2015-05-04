@@ -1,7 +1,7 @@
 
-The files on this directory can be run from either the vm or the host system as long as it is a *nix machine. The scripts will try to figure out where they are and login to the VM if needed
+The commands in this page should be ran from inside the VM. just run ´vagrant ssh´ to get there.
 
-In the VM, this directory was added to $PATH, so the full path is not needed.
+This directory was added to $PATH, which makes the commands globally accessible.
 
 
 

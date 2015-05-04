@@ -1,23 +1,6 @@
 #!/bin/bash
-scrDir="`dirname \"$0\"`"             # relative
-scrDir="`( cd \"$scrDir\" && pwd )`"  # absolutized and normalized
-if [ -z "$scrDir" ] ; then
-  # error; for some reason, the path is not accessible
-  # to the script (e.g. permissions re-evaled after suid)
-  exit 1  # fail
-fi
-
-machineName=$(cat "$scrDir/../hostname")
-hostName="`( hostname -f )`"
-if [ "$hostName" = "$machineName" ]; then
-	echo "running from inside the VM"
-
-	date=$(date +'%Y-%m-%d %H:%M:%S')
-	read Y M D h m s <<< ${date//[-: ]/ }
-
-	if [ ! -d "/vagrant/dbdumps/" ]; then mkdir /vagrant/dbdumps/; fi;
-	/usr/bin/mysqldump -uroot -plocalpassword localdatabase > "/vagrant/dbdumps/$Y$M$D ${h}h$m db_dump.sql"
-else
-	vagrant ssh -c '/vagrant/bin/dumpdb'
-fi
+date=$(date +'%Y-%m-%d %H:%M:%S')
+read Y M D h m s <<< ${date//[-: ]/ }
+if [ ! -d "/vagrant/dbdumps/" ]; then mkdir /vagrant/dbdumps/; fi;
+/usr/bin/mysqldump -uroot -plocalpassword localdatabase > "/vagrant/dbdumps/$Y$M$D ${h}h$m db_dump.sql"
 
