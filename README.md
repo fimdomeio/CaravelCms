@@ -7,30 +7,13 @@ WAT?
 ---------------------
 Caravel is a php CMS based on Laravel. The stack goes something like this:
 
- - server: php, mysql 
+ - server: php, mysql
  - client: angular, less, bootstrap,
 
-Requirements
----------------------
-Vagrant, which requires VirtualBox
-
-
-Install
+Installing and running
 ---------------------
 
-1. `git clone https://github.com/fimdomeio/CaravelCms.git`
-2. `vagrant up`
-4. `vagrant ssh -c "caravelInit"`
-5. 'vagrant ssh'
-
-Once you're there you'll have onscreen info on what to do next 
-
-Running
----------------------
-It's already running. Normal server is running on port 80.
-
-Next time you need to run it its just `vagrant up` and `vagrant ssh -c build`
-
+We've been putting a lot of effort in making this fast and easy go [Check the wiki](https://github.com/fimdomeio/CaravelCms/wiki/install) for instructions.
 
 Why
 ---------------------
