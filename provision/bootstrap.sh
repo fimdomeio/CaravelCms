@@ -67,9 +67,9 @@ if [ ! -h "/vagrant/node_modules" ]; then ln -s /home/vagrant/node_modules /vagr
 echo "Configuring Nginx"
 rm /etc/nginx/sites-available/nginx_vhost 2> /dev/null
 rm /etc/nginx/sites-enabled/nginx_vhost 2> /dev/null
-cp /var/www/provision/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost
+cp /var/www/provision/config/nginx_vhost /etc/nginx/sites-available/caravel
  
-if [ ! -h "/etc/nginx/sites-enabled/" ]; then ln -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/; fi
+if [ ! -h "/etc/nginx/sites-enabled/" ]; then ln -s /etc/nginx/sites-available/caravel /etc/nginx/sites-enabled/; fi
  
 rm -rf /etc/nginx/sites-available/default
  
@@ -109,11 +109,6 @@ composer update
 
 
 
-echo "if they where available on your machine you'll have:"
-echo " - a webserver on local port 8000"
-echo " - mysql on localport 3306 with root password: 'localpassword'"
-echo "Anyway you can access the machine on 192.168.33.10."
-echo "If you're going to access it directly it might be a good idea to add it to /etc/hosts."
 end=`date +%s`
 runtime=$((end-start))
 echo $start > /home/vagrant/last-apt-update
