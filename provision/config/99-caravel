@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Welcome to Caravel 0.2\n----------------------\nAvailable commands:\n"
-echo "update checks if everything is correctly installed and preform any needed updates"
+echo "update checks if everything is correctly installed 
+	and preform any needed updates"
 echo "build	runs the build script and launches a live reload 
 	server at port 3000"
 echo "seed	cleans existing records and re-seeds the database"
