@@ -2,8 +2,8 @@ server {
     listen 80;
     server_name localhost behat.localhost;
      
-    root /var/www/src/public;
-    index index.php index.html;
+    root /var/www/src/client;
+    index index.html index.php;
      
     # Important for VirtualBox
     sendfile off;

@@ -35,13 +35,22 @@ class AuthController extends Controller {
 	{
 		$this->auth = $auth;
 		$this->registrar = $registrar;
+		$this->middleware('guest', ['except' => ['getLogout', 'getSettings']]);
+	}
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+	public function getMe(){
+		return "Should return info in active user";
 	}
 
 	public function getLogin()
 	{
-		return view('auth.login')->with('hideMenu', true);
+		$develUserExists = false;
+		if($_ENV['APP_ENV'] == 'local'){
+			$testUserCount = \App\User::where('email', 'devel@example.com')->count();
+			if($testUserCount == 1);
+			$develUserExists = true;
+		}
+		return view('auth.login')->with('hideMenu', true)->with('develUserExists', $develUserExists);
 	}
 
 	public function postLogin(Request $request)
@@ -67,6 +76,7 @@ class AuthController extends Controller {
 
 	public function getRegister()
 	{
+
 		return view('auth.register')->with('hideMenu', true);
 	}
 
@@ -122,6 +132,23 @@ class AuthController extends Controller {
 		}
 		
 		return View('auth.successful-confirmation')->with('hideMenu', true)->with('success', $success);
+	}
+
+	public function getSettings(){
+		return View('auth.settings');
+	}
+
+	public function postSettings(){
+		dd('ran');
+		$validator = $this->registrar->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+		debug($request->all());
 	}
 
 }

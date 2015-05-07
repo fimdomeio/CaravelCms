@@ -13,12 +13,13 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('admin', ['middleware' => 'auth', 'uses' => 'DashboardController@index']);
+//Route::get('admin', array('middleware' => 'auth', 'uses' => 'DashboardController@index'));
 
-Route::controllers([
+Route::get('admin/generator', array('middleware' => 'auth', 'uses' => 'GeneratorController@index'));
+Route::controllers(array(
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-]);
+));
 
 //OAUTH2
 Route::post('oauth/access_token', function() {
@@ -27,6 +28,6 @@ Route::post('oauth/access_token', function() {
 
 
 // API
-Route::get('api/issues/github',  ['middleware' => 'auth', 'uses' => 'Api\IssuesController@gitHub']);
-Route::get('api/users/whoami', 'Api\UserController@whoami');
-Route::get('api/caravelmessages', ['middleware' => 'auth', 'uses' => 'Api\CaravelMessagesController@index']);
+Route::get('api/issues/github',  array('middleware' => 'auth', 'uses' => 'Api\IssuesController@gitHub'));
+Route::get('api/users/me', 'Api\UserController@me');
+Route::get('api/caravelmessages', array('middleware' => 'auth', 'uses' => 'Api\CaravelMessagesController@index'));

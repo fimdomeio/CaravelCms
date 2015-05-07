@@ -5,10 +5,10 @@ var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var shell = require('gulp-shell')
 
-var lessFiles = ['/vagrant/src/resources/assets/less/**'];
-var htmlFiles = ['/vagrant/src/public/**/**', '/vagrant/src/resources/**/**.php'];
-var jsFiles = '/vagrant/src/public/**/**.js';
-var appFiles = '/vagrant/src/app/**'
+var lessFiles = ['/vagrant/src/assets/less/**'];
+var htmlFiles = ['/vagrant/src/client/**/**', '/vagrant/src/resources/views/**/**.php'];
+var jsFiles = '/vagrant/src/client/js/**/**.js';
+var appFiles = ['/vagrant/src/server/app/**', '/vagrant/server/modules']
 
 gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 
@@ -21,13 +21,13 @@ gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 });
 
 gulp.task('less', function() {
-  gulp.src('/vagrant/src/resources/assets/less/admin.less')
+  gulp.src('/vagrant/src/assets/less/admin.less')
     .pipe(less())
-    .pipe(gulp.dest('/vagrant/src/public/css/'))
+    .pipe(gulp.dest('/vagrant/src/client/css/'))
     .pipe(reload({stream:true})); //Browser Sync
 });
 
-gulp.task('bowercopy', ['bowerUpdate'],function(){
+gulp.task('bowercopy', function(){
   gulp.src([
     '/vagrant/src/bower_components/angular/angular.js',
     '/vagrant/src/bower_components/angular-bootstrap/ui-bootstrap.js',
@@ -36,16 +36,12 @@ gulp.task('bowercopy', ['bowerUpdate'],function(){
     '/vagrant/src/bower_components/restangular/dist/restangular.js',
     '/vagrant/src/bower_components/angular-route/angular-route.js'
     ])
-  .pipe(gulp.dest('/vagrant/src/public/js/'))
+  .pipe(gulp.dest('/vagrant/src/client/js/'))
 
   gulp.src('/vagrant/src/bower_components/angular-loading-bar/src/loading-bar.css')
-  .pipe(gulp.dest('/vagrant/src/public/css/'))
+  .pipe(gulp.dest('/vagrant/src/client/css/'))
 
 });
-
-gulp.task('bowerUpdate', shell.task([
-  'cd /vagrant/src; /usr/local/bin/bower install'
-]));
 
 gulp.task('js', function(){
   gulp.src(jsFiles)
