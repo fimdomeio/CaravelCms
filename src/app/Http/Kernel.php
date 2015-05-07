@@ -15,7 +15,8 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'Caravel\Http\Middleware\VerifyCsrfToken',
+		//'Caravel\Http\Middleware\VerifyCsrfToken',
+		'LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware'
 	];
 
 	/**
@@ -27,6 +28,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'Caravel\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Caravel\Http\Middleware\RedirectIfAuthenticated',
+		'csrf' => 'App\Http\Middleware\VerifyCsrfToken',
 	];
 
 }

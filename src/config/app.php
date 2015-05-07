@@ -147,6 +147,8 @@ return [
 
 		//Thirdparty
 		'Barryvdh\Debugbar\ServiceProvider',
+		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
+		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Pingpong\Modules\ModulesServiceProvider',
     'Pingpong\Modules\Providers\BootstrapServiceProvider',
 
@@ -200,6 +202,7 @@ return [
 
 		//Thirdparty
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
 
 	],
 
