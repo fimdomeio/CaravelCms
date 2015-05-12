@@ -90,7 +90,7 @@ if [ ! -h "/home/vagrant/www" ]; then ln -s /vagrant/src /home/vagrant/www; fi;
    echo 'cd /vagrant' >> /home/vagrant/.profile
  fi
 
-if [ ! -f "/vagrant/src/.env" ]; then cp /vagrant/src/.env.example /vagrant/src/.env ; fi;
+if [ ! -f "/vagrant/src/.env" ]; then cp /vagrant/src/server/.env.example /vagrant/src/server/.env ; fi;
 
 
  if ! grep -q 'PATH="~/.composer/vendor/bin:/vagrant/bin:$PATH"' "/home/vagrant/.profile"; then
@@ -104,7 +104,7 @@ chmod +x /etc/update-motd.d/99-caravel
 
 cd /vagrant
 npm install
-cd /vagrant/src
+cd /vagrant/src/server
 composer update
 
 

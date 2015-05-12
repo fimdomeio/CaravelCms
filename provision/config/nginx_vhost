@@ -2,14 +2,14 @@ server {
     listen 80;
     server_name localhost behat.localhost;
      
-    root /var/www/src/client;
+    root /var/www/src/server/public;
     index index.html index.php;
      
     # Important for VirtualBox
     sendfile off;
      
     location / {
-        try_files $uri $uri/ $uri/index.html /index.php?is_args$args;
+        try_files $uri $uri.html $uri/ $uri.html/ $uri/index.html /index.php?is_args$args;
     }
      
     location ~ \.php {

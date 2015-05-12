@@ -21,9 +21,9 @@ gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 });
 
 gulp.task('less', function() {
-  gulp.src('/vagrant/src/assets/less/admin.less')
+  gulp.src('/vagrant/src/server/assets/less/admin.less')
     .pipe(less())
-    .pipe(gulp.dest('/vagrant/src/client/css/'))
+    .pipe(gulp.dest('/vagrant/src/css/'))
     .pipe(reload({stream:true})); //Browser Sync
 });
 
@@ -36,7 +36,7 @@ gulp.task('bowercopy', function(){
     '/vagrant/src/bower_components/restangular/dist/restangular.js',
     '/vagrant/src/bower_components/angular-route/angular-route.js'
     ])
-  .pipe(gulp.dest('/vagrant/src/client/js/'))
+  .pipe(gulp.dest('/vagrant/src/client/js/libs'))
 
   gulp.src('/vagrant/src/bower_components/angular-loading-bar/src/loading-bar.css')
   .pipe(gulp.dest('/vagrant/src/client/css/'))
