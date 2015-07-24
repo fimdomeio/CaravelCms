@@ -5,22 +5,22 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*",
-		"barryvdh/laravel-debugbar": "~2.0",
-		"pingpong/modules": "2.0.*@dev",
-		"pingpong/generators": "2.0.*@dev",
+		"laravel/framework": "~5.1",
+		"barryvdh/laravel-debugbar": "*",
+		"pingpong/modules": "~2.1",
+		"pingpong/generators": "2.1.*@dev",
 		"lucadegasperi/oauth2-server-laravel": "4.0.x@dev",
-		"markusjwetzel/laravel-handlebars": "1.0.*@dev",
-		"zordius/lightncandy": "dev-master"
+		"proai/laravel-handlebars": "~1.0@dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"laracasts/behat-laravel-extension": "@dev",
-		"behat/behat": "~3.0",
-		"behat/mink": "~1.6",
-		"behat/mink-extension": "~2.0",
-		"behat/mink-selenium2-driver": "*",
+		"behat/behat": "~3.0@dev",
+	  	"behat/mink": "~1.6@dev",
+	  	"behat/mink-extension": "~2.0@dev",
+	  	"laracasts/behat-laravel-extension": "dev-master",
+	  	"behat/mink-selenium2-driver": "*",
 		"fzaninotto/faker": "*",
 		"facebook/webdriver": "dev-master"
 	},
@@ -29,7 +29,8 @@
 			"database"
 		],
 		"psr-4": {
-			"Caravel\\": "app/"
+			"Caravel\\": "app/",
+			"Modules\\": "modules/"
 		}
 	},
 	"autoload-dev": {
