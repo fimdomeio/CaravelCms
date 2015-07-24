@@ -29,17 +29,10 @@ gulp.task('less', function() {
 
 gulp.task('bowercopy', function(){
   gulp.src([
-    '/vagrant/src/bower_components/angular/angular.js',
-    '/vagrant/src/bower_components/angular-bootstrap/ui-bootstrap.js',
-    '/vagrant/src/bower_components/angular-loading-bar/build/loading-bar.js',
-    '/vagrant/src/bower_components/lodash/dist/lodash.js',
-    '/vagrant/src/bower_components/restangular/dist/restangular.js',
-    '/vagrant/src/bower_components/angular-route/angular-route.js'
+    '/vagrant/src/bower_components/bootstrap/dist/js/bootstrap.min.js',
+    '/vagrant/src/bower_components/jquery/dist/jquery.min.js'
     ])
-  .pipe(gulp.dest('/vagrant/src/client/js/libs'))
-
-  gulp.src('/vagrant/src/bower_components/angular-loading-bar/src/loading-bar.css')
-  .pipe(gulp.dest('/vagrant/src/client/css/'))
+  .pipe(gulp.dest('/vagrant/src/server/public/js/'))
 
 });
 
