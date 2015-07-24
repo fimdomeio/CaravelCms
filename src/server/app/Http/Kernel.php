@@ -16,7 +16,8 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		//'Caravel\Http\Middleware\VerifyCsrfToken',
-		'LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware'
+		'LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware',
+		'Caravel\Http\Middleware\GlobalVars'
 	];
 
 	/**
@@ -27,8 +28,8 @@ class Kernel extends HttpKernel {
 	protected $routeMiddleware = [
 		'auth' => 'Caravel\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'Caravel\Http\Middleware\RedirectIfAuthenticated',
-		'csrf' => 'App\Http\Middleware\VerifyCsrfToken',
+		'guest' => '\Caravel\Http\Middleware\RedirectIfAuthenticated',
+		'csrf' => '\Caravel\Http\Middleware\VerifyCsrfToken',
 	];
 
 }
