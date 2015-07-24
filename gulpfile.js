@@ -8,7 +8,7 @@ var shell = require('gulp-shell')
 var lessFiles = ['/vagrant/src/assets/less/**'];
 var htmlFiles = ['/vagrant/src/client/**/**', '/vagrant/src/resources/views/**/**.php'];
 var jsFiles = '/vagrant/src/client/js/**/**.js';
-var appFiles = ['/vagrant/src/server/app/**', '/vagrant/server/modules']
+var appFiles = ['/vagrant/src/server/app/**/**', '/vagrant/src/server/modules/**/**']
 
 gulp.task('default', ['bowercopy', 'browser-sync','less', 'js'], function() {
 
