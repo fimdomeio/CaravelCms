@@ -2,7 +2,7 @@
   "name": "Caravel CMS",
   "version": "0.2",
   "dependencies": {
-    "bootstrap": "~3.*",
+    "bootstrap": "~3.*"
   },
   "private": true
 }
