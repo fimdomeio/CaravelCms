@@ -28,3 +28,4 @@ src/public/css/admin.css
 src/public/js/ui-bootstrap.js
 src/public/js/angular-route.js
 src/server/public/css
+src/server/public/js
